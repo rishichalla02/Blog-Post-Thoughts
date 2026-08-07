@@ -50,6 +50,46 @@ exports.getUserBlogs = async (req, res) => {
   }
 };
 
+// PUT /api/blogs/:id (protected)
+exports.updateBlog = async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) return res.status(404).json({ message: "Blog not found" });
+
+    if (blog.author.toString() !== req.user.id) {
+      return res
+        .status(403)
+        .json({ message: "Not authorized to edit this post" });
+    }
+
+    const { title, category, thumbnail, content } = req.body;
+    blog.title = title ?? blog.title;
+    blog.category = category ?? blog.category;
+    blog.thumbnail = thumbnail ?? blog.thumbnail;
+    blog.content = content ?? blog.content;
+
+    const updated = await blog.save();
+    const populated = await updated.populate("author", "name email avatar");
+    res.status(200).json(populated);
+  } catch (err) {
+    res.status(500).json({ message: "Server error", error: err.message });
+  }
+};
+
+// GET /api/blogs/:id (public, needed to prefill the edit form)
+exports.getBlogById = async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id).populate(
+      "author",
+      "name email avatar",
+    );
+    if (!blog) return res.status(404).json({ message: "Blog not found" });
+    res.status(200).json(blog);
+  } catch (err) {
+    res.status(500).json({ message: "Server error", error: err.message });
+  }
+};
+
 // DELETE /api/blogs/:id (protected)
 exports.deleteBlog = async (req, res) => {
   try {

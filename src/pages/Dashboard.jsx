@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 import AnimatedPage from "../components/AnimatedPage";
 import api from "../api/axios";
 
 export default function Dashboard() {
+  const navigate = useNavigate();
   const { user } = useAuth();
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -101,7 +102,10 @@ export default function Dashboard() {
                       </span>
                     </div>
                     <div className="flex gap-3">
-                      <button className="text-sm text-cobalt font-medium">
+                      <button
+                        onClick={() => navigate(`/edit/${post._id}`)}
+                        className="text-sm text-cobalt font-medium"
+                      >
                         Edit
                       </button>
                       <button
