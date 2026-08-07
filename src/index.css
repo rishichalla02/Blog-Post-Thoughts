@@ -2,10 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @apply bg-paper text-ink font-body;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   @apply font-display;
+}
+
+a,
+button {
+  @apply transition-colors duration-200;
 }
