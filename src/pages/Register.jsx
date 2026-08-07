@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 import AnimatedPage from "../components/AnimatedPage";
 
@@ -11,14 +12,16 @@ export default function Register() {
     confirmPassword: "",
   });
   const [error, setError] = useState("");
-  const { login } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const { register } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
     if (!form.name || !form.email || !form.password || !form.confirmPassword) {
       setError("All fields are required.");
       return;
@@ -27,8 +30,17 @@ export default function Register() {
       setError("Passwords do not match.");
       return;
     }
-    login(form.email);
-    navigate("/dashboard");
+    setLoading(true);
+    try {
+      await register(form);
+      navigate("/dashboard");
+    } catch (err) {
+      setError(
+        err.response?.data?.message || "Registration failed. Try again.",
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -37,7 +49,7 @@ export default function Register() {
         <h1 className="font-display text-3xl font-700 mb-2">
           Create an account
         </h1>
-        <p className="text-ink/60 mb-8">Join RC-Blog and start publishing.</p>
+        <p className="text-ink/60 mb-8">Join Inkwell and start publishing.</p>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
@@ -49,7 +61,7 @@ export default function Register() {
               name="name"
               value={form.name}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40"
+              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
           <div>
@@ -59,7 +71,7 @@ export default function Register() {
               name="email"
               value={form.email}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40"
+              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
           <div>
@@ -69,7 +81,7 @@ export default function Register() {
               name="password"
               value={form.password}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40"
+              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
           <div>
@@ -81,16 +93,29 @@ export default function Register() {
               name="confirmPassword"
               value={form.confirmPassword}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40"
+              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
-          {error && <p className="text-sm text-red-600">{error}</p>}
-          <button
+
+          {error && (
+            <motion.p
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-sm text-red-600"
+            >
+              {error}
+            </motion.p>
+          )}
+
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             type="submit"
-            className="w-full bg-cobalt text-paper py-2.5 rounded-md font-medium hover:bg-cobalt/90"
+            disabled={loading}
+            className="w-full bg-cobalt text-paper py-2.5 rounded-md font-medium hover:bg-cobalt/90 disabled:opacity-60 transition-colors duration-200"
           >
-            Sign up
-          </button>
+            {loading ? "Creating account..." : "Sign up"}
+          </motion.button>
         </form>
 
         <p className="text-sm text-ink/60 mt-6">

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { motion } from "framer-motion";
 import { categories } from "../data/mockData";
 import AnimatedPage from "../components/AnimatedPage";
+import api from "../api/axios";
 
 export default function CreateBlog() {
-  const { user } = useAuth();
   const navigate = useNavigate();
   const [form, setForm] = useState({
     title: "",
@@ -13,20 +13,28 @@ export default function CreateBlog() {
     thumbnail: "",
     content: "",
   });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const newPost = {
-      _id: Date.now().toString(),
-      ...form,
-      author: { _id: user?._id, name: user?.name },
-      createdAt: new Date().toISOString(),
-    };
-    console.log("Publish payload (ready for POST /api/posts):", newPost);
-    navigate("/dashboard");
+    setError("");
+    if (!form.title || !form.content) {
+      setError("Title and content are required.");
+      return;
+    }
+    setLoading(true);
+    try {
+      await api.post("/blogs", form);
+      navigate("/dashboard");
+    } catch (err) {
+      setError(err.response?.data?.message || "Could not publish post.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -44,7 +52,7 @@ export default function CreateBlog() {
               name="title"
               value={form.title}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40"
+              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
 
@@ -54,7 +62,7 @@ export default function CreateBlog() {
               name="category"
               value={form.category}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40"
+              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             >
               {categories
                 .filter((c) => c !== "All")
@@ -76,7 +84,7 @@ export default function CreateBlog() {
               value={form.thumbnail}
               onChange={handleChange}
               placeholder="https://..."
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40"
+              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
 
@@ -87,16 +95,29 @@ export default function CreateBlog() {
               value={form.content}
               onChange={handleChange}
               rows={10}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40"
+              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
 
-          <button
+          {error && (
+            <motion.p
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-sm text-red-600"
+            >
+              {error}
+            </motion.p>
+          )}
+
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             type="submit"
-            className="bg-cobalt text-paper px-6 py-2.5 rounded-md font-medium hover:bg-cobalt/90"
+            disabled={loading}
+            className="bg-cobalt text-paper px-6 py-2.5 rounded-md font-medium hover:bg-cobalt/90 disabled:opacity-60 transition-colors duration-200"
           >
-            Publish
-          </button>
+            {loading ? "Publishing..." : "Publish"}
+          </motion.button>
         </form>
       </div>
     </AnimatedPage>

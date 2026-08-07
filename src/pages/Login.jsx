@@ -1,25 +1,35 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 import AnimatedPage from "../components/AnimatedPage";
 
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
     if (!form.email || !form.password) {
       setError("Both fields are required.");
       return;
     }
-    login(form.email);
-    navigate("/dashboard");
+    setLoading(true);
+    try {
+      await login(form);
+      navigate("/dashboard");
+    } catch (err) {
+      setError(err.response?.data?.message || "Login failed. Try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -36,7 +46,7 @@ export default function Login() {
               name="email"
               value={form.email}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40"
+              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
           <div>
@@ -46,16 +56,29 @@ export default function Login() {
               name="password"
               value={form.password}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40"
+              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
-          {error && <p className="text-sm text-red-600">{error}</p>}
-          <button
+
+          {error && (
+            <motion.p
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-sm text-red-600"
+            >
+              {error}
+            </motion.p>
+          )}
+
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             type="submit"
-            className="w-full bg-cobalt text-paper py-2.5 rounded-md font-medium hover:bg-cobalt/90"
+            disabled={loading}
+            className="w-full bg-cobalt text-paper py-2.5 rounded-md font-medium hover:bg-cobalt/90 disabled:opacity-60 transition-colors duration-200"
           >
-            Log in
-          </button>
+            {loading ? "Logging in..." : "Log in"}
+          </motion.button>
         </form>
 
         <p className="text-sm text-ink/60 mt-6">
