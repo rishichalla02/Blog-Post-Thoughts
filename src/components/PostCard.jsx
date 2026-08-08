@@ -31,7 +31,7 @@ export default function PostCard({ post }) {
   };
 
   return (
-    <Link to={`/post/${post._id}`} className="group block">
+    <Link to={`/blog/${post._id}`} className="group block">
       <motion.div
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}

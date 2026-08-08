@@ -96,10 +96,17 @@ export default function Dashboard() {
                     className="flex items-center justify-between py-4"
                   >
                     <div>
-                      <p className="font-medium">{post.title}</p>
-                      <span className="font-mono text-xs text-ink/50">
-                        {post.category}
-                      </span>
+                      <Link
+                        to={`/blog/${post._id}`}
+                        className="font-medium hover:text-cobalt transition-colors duration-200"
+                      >
+                        {post.title}
+                      </Link>
+                      <div>
+                        <span className="font-mono text-xs text-ink/50">
+                          {post.category}
+                        </span>
+                      </div>
                     </div>
                     <div className="flex gap-3">
                       <button
