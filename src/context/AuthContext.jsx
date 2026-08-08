@@ -15,11 +15,7 @@ export function AuthProvider({ children }) {
   }, [user]);
 
   const register = async ({ name, email, password }) => {
-    const { data } = await api.post("/auth/register", {
-      name,
-      email,
-      password,
-    });
+    const { data } = await api.post("/auth/register", { name, email, password });
     localStorage.setItem("token", data.token);
     setUser(data.user);
   };
@@ -30,13 +26,19 @@ export function AuthProvider({ children }) {
     setUser(data.user);
   };
 
+  const updateProfile = async (payload) => {
+    const { data } = await api.put("/auth/profile", payload);
+    setUser(data.user);
+    return data.user;
+  };
+
   const logout = () => {
     localStorage.removeItem("token");
     setUser(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, register, logout }}>
+    <AuthContext.Provider value={{ user, login, register, updateProfile, logout }}>
       {children}
     </AuthContext.Provider>
   );
