@@ -83,7 +83,7 @@ export default function Dashboard() {
           <div className="divide-y divide-ink/10 border-t border-b border-ink/10">
             <AnimatePresence>
               {posts.length === 0 ? (
-                <p className="text-ink/50 py-6 font-mono text-sm">
+                <p className="text-ink/50 dark:text-paper/50 py-6 font-mono text-sm">
                   You haven't published anything yet.
                 </p>
               ) : (
@@ -111,13 +111,13 @@ export default function Dashboard() {
                     <div className="flex gap-3">
                       <button
                         onClick={() => navigate(`/edit/${post._id}`)}
-                        className="text-sm text-cobalt font-medium"
+                        className="text-sm text-cobalt dark:text-mustard font-medium hover:underline"
                       >
                         Edit
                       </button>
                       <button
                         onClick={() => handleDelete(post._id)}
-                        className="text-sm text-red-600 font-medium"
+                        className="text-sm text-red-600 dark:text-red-400 font-medium hover:underline"
                       >
                         Delete
                       </button>

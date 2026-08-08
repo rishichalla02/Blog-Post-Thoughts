@@ -68,7 +68,7 @@ export default function Register() {
           Create an account
         </h1>
         <p className="text-ink/60 dark:text-paper/60 mb-8">
-          Join Inkwell and start publishing.
+          Join RC-Blog and start publishing.
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-5">
@@ -81,7 +81,7 @@ export default function Register() {
               name="name"
               value={form.name}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+              className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
           <div>
@@ -91,7 +91,7 @@ export default function Register() {
               name="email"
               value={form.email}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+              className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
           <div>
@@ -101,7 +101,7 @@ export default function Register() {
               name="password"
               value={form.password}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+              className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
             {form.password && (
               <ul className="text-xs mt-2 space-y-1">
@@ -134,7 +134,7 @@ export default function Register() {
               name="confirmPassword"
               value={form.confirmPassword}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+              className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
 
@@ -153,7 +153,7 @@ export default function Register() {
             whileTap={{ scale: 0.98 }}
             type="submit"
             disabled={loading}
-            className="w-full bg-cobalt text-paper py-2.5 rounded-md font-medium hover:bg-cobalt/90 disabled:opacity-60 transition-colors duration-200"
+            className="w-full bg-cobalt dark:bg-mustard text-paper dark:text-ink px-6 py-2.5 rounded-md font-medium hover:bg-cobalt/90 dark:hover:bg-mustard/90 disabled:opacity-60 transition-colors duration-200"
           >
             {loading ? "Creating account..." : "Sign up"}
           </motion.button>

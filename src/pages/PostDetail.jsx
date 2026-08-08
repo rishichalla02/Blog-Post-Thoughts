@@ -107,17 +107,15 @@ export default function PostDetail() {
           </motion.div>
         )}
 
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.25 }}
-          className="prose prose-lg max-w-none mt-10 text-ink/80 leading-relaxed whitespace-pre-line"
-        >
+        <div className="prose prose-lg max-w-none mt-10 text-ink/80 dark:text-paper/80 leading-relaxed whitespace-pre-line">
           {post.content}
-        </motion.div>
+        </div>
 
         <div className="mt-16 pt-6 border-t border-ink/10">
-          <Link to="/" className="text-sm text-cobalt font-medium">
+          <Link
+            to="/"
+            className="text-sm text-cobalt dark:text-mustard font-medium hover:underline"
+          >
             ← Back to all posts
           </Link>
         </div>

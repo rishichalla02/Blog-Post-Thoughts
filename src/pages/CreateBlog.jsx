@@ -52,7 +52,7 @@ export default function CreateBlog() {
               name="title"
               value={form.title}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
 
@@ -62,7 +62,7 @@ export default function CreateBlog() {
               name="category"
               value={form.category}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             >
               {categories
                 .filter((c) => c !== "All")
@@ -84,7 +84,7 @@ export default function CreateBlog() {
               value={form.thumbnail}
               onChange={handleChange}
               placeholder="https://..."
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
 
@@ -95,7 +95,7 @@ export default function CreateBlog() {
               value={form.content}
               onChange={handleChange}
               rows={10}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
 
@@ -114,7 +114,7 @@ export default function CreateBlog() {
             whileTap={{ scale: 0.98 }}
             type="submit"
             disabled={loading}
-            className="bg-cobalt text-paper px-6 py-2.5 rounded-md font-medium hover:bg-cobalt/90 disabled:opacity-60 transition-colors duration-200"
+            className="bg-cobalt dark:bg-mustard text-paper dark:text-ink px-6 py-2.5 rounded-md font-medium hover:bg-cobalt/90 dark:hover:bg-mustard/90 disabled:opacity-60 transition-colors duration-200"
           >
             {loading ? "Publishing..." : "Publish"}
           </motion.button>

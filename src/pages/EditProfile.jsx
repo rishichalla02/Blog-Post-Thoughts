@@ -113,7 +113,7 @@ export default function EditProfile() {
               name="name"
               value={form.name}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+              className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
 
@@ -124,7 +124,7 @@ export default function EditProfile() {
               value={form.bio}
               onChange={handleChange}
               rows={3}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+              className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
 
@@ -137,7 +137,7 @@ export default function EditProfile() {
               name="avatar"
               value={form.avatar}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+              className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
 
@@ -152,7 +152,7 @@ export default function EditProfile() {
                 placeholder="Current password"
                 value={form.currentPassword}
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+                className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
               />
               <input
                 type="password"
@@ -160,7 +160,7 @@ export default function EditProfile() {
                 placeholder="New password"
                 value={form.newPassword}
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+                className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
               />
               <input
                 type="password"
@@ -168,7 +168,7 @@ export default function EditProfile() {
                 placeholder="Confirm new password"
                 value={form.confirmNewPassword}
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+                className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
               />
             </div>
 
@@ -219,7 +219,7 @@ export default function EditProfile() {
             whileTap={{ scale: 0.98 }}
             type="submit"
             disabled={loading}
-            className="bg-cobalt text-paper px-6 py-2.5 rounded-md font-medium hover:bg-cobalt/90 disabled:opacity-60 transition-colors duration-200"
+            className="bg-cobalt dark:bg-mustard text-paper dark:text-ink px-6 py-2.5 rounded-md font-medium hover:bg-cobalt/90 dark:hover:bg-mustard/90 disabled:opacity-60 transition-colors duration-200"
           >
             {loading ? "Saving..." : "Save changes"}
           </motion.button>

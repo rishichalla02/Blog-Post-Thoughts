@@ -54,7 +54,7 @@ export default function Home() {
         ) : error ? (
           <p className="text-red-600 font-mono text-sm">{error}</p>
         ) : filteredPosts.length === 0 ? (
-          <p className="text-ink/50 font-mono text-sm">
+          <p className="text-ink/50 dark:text-paper/50 font-mono text-sm">
             No articles match your search.
           </p>
         ) : (

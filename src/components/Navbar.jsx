@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 import ThemeToggle from "./ThemeToggle";
 import ConfirmModal from "./ConfirmModal";
+import Tooltip from "./Tooltip";
 
 export default function Navbar() {
   const { user, logout } = useAuth();
@@ -20,7 +21,7 @@ export default function Navbar() {
     <header className="border-b border-ink/10 dark:border-paper/10 bg-paper/80 dark:bg-ink/80 backdrop-blur-md sticky top-0 z-40 transition-colors duration-300">
       <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link to="/" className="font-display text-2xl font-700 tracking-tight">
-          Inkwell
+          RC-Blog
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
@@ -39,14 +40,14 @@ export default function Navbar() {
                   <span
                     className={
                       isActive
-                        ? "text-cobalt"
-                        : "text-ink/70 dark:text-paper/70 group-hover:text-ink dark:group-hover:text-paper transition-colors duration-200"
+                        ? "text-cobalt dark:text-mustard"
+                        : "text-ink/70 dark:text-paper/70 group-hover:text-cobalt dark:group-hover:text-mustard transition-colors duration-200"
                     }
                   >
                     {link.label}
                   </span>
                   <span
-                    className={`absolute -bottom-1 left-0 h-[1.5px] bg-cobalt transition-all duration-300 ${
+                    className={`absolute -bottom-1 left-0 h-[1.5px] bg-cobalt dark:bg-mustard transition-all duration-300 ${
                       isActive ? "w-full" : "w-0 group-hover:w-full"
                     }`}
                   />
@@ -61,17 +62,19 @@ export default function Navbar() {
 
           {user ? (
             <>
-              <Link to="/edit-profile">
-                <motion.img
-                  whileHover={{ scale: 1.08 }}
-                  src={user.avatar}
-                  alt={user.name}
-                  className="w-8 h-8 rounded-full object-cover hover:ring-2 hover:ring-cobalt/40 transition-all duration-200"
-                />
-              </Link>
+              <Tooltip text="Edit profile">
+                <Link to="/edit-profile">
+                  <motion.img
+                    whileHover={{ scale: 1.08 }}
+                    src={user.avatar}
+                    alt={user.name}
+                    className="w-8 h-8 rounded-full object-cover ring-2 ring-transparent hover:ring-cobalt/50 dark:hover:ring-mustard/50 transition-all duration-200 cursor-pointer"
+                  />
+                </Link>
+              </Tooltip>
               <button
                 onClick={() => setShowLogoutConfirm(true)}
-                className="text-sm font-medium text-ink/70 dark:text-paper/70 hover:text-ink dark:hover:text-paper transition-colors duration-200"
+                className="text-sm font-medium text-ink/70 dark:text-paper/70 hover:text-cobalt dark:hover:text-mustard px-2 py-1 rounded-md hover:bg-ink/5 dark:hover:bg-paper/10 transition-colors duration-200"
               >
                 Log out
               </button>
@@ -80,7 +83,7 @@ export default function Navbar() {
             <>
               <Link
                 to="/login"
-                className="text-sm font-medium text-ink/70 dark:text-paper/70 hover:text-ink dark:hover:text-paper transition-colors duration-200"
+                className="text-sm font-medium text-ink/70 dark:text-paper/70 hover:text-cobalt dark:hover:text-mustard px-2 py-1 rounded-md hover:bg-ink/5 dark:hover:bg-paper/10 transition-colors duration-200"
               >
                 Log in
               </Link>
@@ -90,7 +93,7 @@ export default function Navbar() {
               >
                 <Link
                   to="/register"
-                  className="text-sm font-medium bg-cobalt text-paper px-4 py-2 rounded-md hover:bg-cobalt/90 transition-colors duration-200 inline-block"
+                  className="text-sm font-medium bg-cobalt dark:bg-mustard text-paper dark:text-ink px-4 py-2 rounded-md hover:bg-cobalt/90 dark:hover:bg-mustard/90 transition-colors duration-200 inline-block"
                 >
                   Sign up
                 </Link>
@@ -102,7 +105,7 @@ export default function Navbar() {
 
       <ConfirmModal
         open={showLogoutConfirm}
-        title="Log out of Inkwell?"
+        title="Log out of RC-Blog?"
         message="You'll need to log in again to access your dashboard and write posts."
         confirmLabel="Log out"
         onConfirm={handleLogout}
