@@ -52,7 +52,7 @@ export default function CreateBlog() {
               name="title"
               value={form.title}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+              className="w-full px-4 py-2.5 rounded-md border border-white border-ink/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
 
@@ -62,7 +62,7 @@ export default function CreateBlog() {
               name="category"
               value={form.category}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+              className="w-full px-4 py-2.5 rounded-md border border-white border-ink/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             >
               {categories
                 .filter((c) => c !== "All")
@@ -84,7 +84,7 @@ export default function CreateBlog() {
               value={form.thumbnail}
               onChange={handleChange}
               placeholder="https://..."
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+              className="w-full px-4 py-2.5 rounded-md border border-white border-ink/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
 
@@ -95,7 +95,7 @@ export default function CreateBlog() {
               value={form.content}
               onChange={handleChange}
               rows={10}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+              className="w-full px-4 py-2.5 rounded-md border border-white border-ink/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
 

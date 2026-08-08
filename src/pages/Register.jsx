@@ -159,7 +159,7 @@ export default function Register() {
           </motion.button>
         </form>
 
-        <p className="text-sm text-ink/60 dark:text-paper/60 mt-6">
+        <p className="text-md text-ink/60 dark:text-paper/60 mt-6">
           Already have an account?{" "}
           <Link to="/login" className="text-cobalt font-medium">
             Log in

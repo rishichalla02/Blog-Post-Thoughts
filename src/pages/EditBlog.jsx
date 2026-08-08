@@ -81,7 +81,7 @@ export default function EditBlog() {
               name="title"
               value={form.title}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+              className="w-full px-4 py-2.5 rounded-md border border-white border-ink/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
 
@@ -91,7 +91,7 @@ export default function EditBlog() {
               name="category"
               value={form.category}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+              className="w-full px-4 py-2.5 rounded-md border border-white border-ink/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             >
               {categories
                 .filter((c) => c !== "All")
@@ -112,7 +112,7 @@ export default function EditBlog() {
               name="thumbnail"
               value={form.thumbnail}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+              className="w-full px-4 py-2.5 rounded-md border border-white border-ink/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
 
@@ -123,7 +123,7 @@ export default function EditBlog() {
               value={form.content}
               onChange={handleChange}
               rows={10}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+              className="w-full px-4 py-2.5 rounded-md border border-white border-ink/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
 

@@ -31,4 +31,4 @@ export const mockPosts = [
   },
 ];
 
-export const categories = ["All", "Engineering", "Opinion", "Productivity"];
+export const categories = ["All", "Engineering", "Opinion", "Productivity", "Biography", "Education", "Novel", "Magazine", "Story", " Poem", "Other"];

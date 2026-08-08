@@ -46,14 +46,16 @@ export default function PostCard({ post }) {
         />
       </motion.div>
       <div className="mt-4">
-        <span className="font-mono text-xs uppercase tracking-wide text-cobalt">
+        <span className="font-mono bg-yellow-400 p-1 text-xs uppercase tracking-wide text-cobalt">
           {post.category}
         </span>
-        <h3 className="font-display text-xl font-600 mt-1 group-hover:text-cobalt transition-colors duration-300">
+        <h3 className="font-display text-xl font-600 mt-1 group-hover:text-cobalt dark:group-hover:text-mustard transition-colors duration-300">
           {post.title}
         </h3>
-        <p className="text-sm text-ink/60 mt-2 line-clamp-2">{post.content}</p>
-        <div className="flex items-center gap-2 mt-3 text-xs text-ink/50 font-mono">
+        <p className="text-sm text-ink/60 dark:text-paper/60 mt-2 line-clamp-2">
+          {post.content}
+        </p>
+        <div className="flex items-center gap-2 mt-3 text-xs text-ink/50 dark:text-paper/50 font-mono">
           <span>{post.author.name}</span>
           <span>·</span>
           <span>{date}</span>

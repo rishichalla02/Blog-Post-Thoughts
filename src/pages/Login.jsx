@@ -46,7 +46,7 @@ export default function Login() {
               name="email"
               value={form.email}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+              className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
           <div>
@@ -56,7 +56,7 @@ export default function Login() {
               name="password"
               value={form.password}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 rounded-md border border-ink/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+              className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
 
@@ -81,7 +81,7 @@ export default function Login() {
           </motion.button>
         </form>
 
-        <p className="text-sm text-ink/60 mt-6">
+        <p className="text-md text-ink/60 dark:text-paper/60 mt-6">
           Don't have an account?{" "}
           <Link to="/register" className="text-cobalt font-medium">
             Sign up

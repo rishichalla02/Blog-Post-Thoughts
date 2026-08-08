@@ -111,13 +111,13 @@ export default function Dashboard() {
                     <div className="flex gap-3">
                       <button
                         onClick={() => navigate(`/edit/${post._id}`)}
-                        className="text-sm text-cobalt dark:text-mustard font-medium hover:underline"
+                        className="text-sm bg-amber-200 p-2 rounded-md text-cobalt dark:text-amber-700 font-extrabold hover:underline"
                       >
                         Edit
                       </button>
                       <button
                         onClick={() => handleDelete(post._id)}
-                        className="text-sm text-red-600 dark:text-red-400 font-medium hover:underline"
+                        className="text-sm bg-red-600 p-2 rounded-md text-red-100 dark:text-amber-100 font-medium hover:underline"
                       >
                         Delete
                       </button>

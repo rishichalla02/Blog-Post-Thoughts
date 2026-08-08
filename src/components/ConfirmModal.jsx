@@ -20,11 +20,11 @@ export default function ConfirmModal({
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
+            animate={{ opacity: 1, scale: 1, y: 100 }}
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
             transition={{ duration: 0.2 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-paper dark:bg-ink text-ink dark:text-paper rounded-lg shadow-xl max-w-sm w-full p-6"
+            className="bg-paper border-white border-2 dark:bg-ink text-ink dark:text-paper rounded-lg shadow-xl max-w-sm w-full p-6"
           >
             <h3 className="font-display text-lg font-600 mb-2">{title}</h3>
             <p className="text-sm text-ink/60 dark:text-paper/60 mb-6">
