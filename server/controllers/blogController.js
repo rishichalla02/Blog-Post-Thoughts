@@ -76,16 +76,23 @@ exports.updateBlog = async (req, res) => {
   }
 };
 
-// GET /api/blogs/:id (public, needed to prefill the edit form)
+// GET /api/blogs/:id (public)
 exports.getBlogById = async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id).populate(
       "author",
       "name email avatar",
     );
-    if (!blog) return res.status(404).json({ message: "Blog not found" });
+
+    if (!blog) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
     res.status(200).json(blog);
   } catch (err) {
+    if (err.kind === "ObjectId") {
+      return res.status(404).json({ message: "Post not found" });
+    }
     res.status(500).json({ message: "Server error", error: err.message });
   }
 };
