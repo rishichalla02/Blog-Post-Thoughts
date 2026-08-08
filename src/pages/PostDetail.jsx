@@ -97,12 +97,12 @@ export default function PostDetail() {
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-10 rounded-lg overflow-hidden"
+            className="mt-10 rounded-lg overflow-hidden aspect-[16/9]"
           >
             <img
               src={post.thumbnail}
               alt={post.title}
-              className="w-full object-cover"
+              className="w-full h-full object-cover"
             />
           </motion.div>
         )}
