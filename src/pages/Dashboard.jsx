@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 import AnimatedPage from "../components/AnimatedPage";
+import ConfirmModal from "../components/ConfirmModal";
 import api from "../api/axios";
 
 export default function Dashboard() {
@@ -10,6 +11,7 @@ export default function Dashboard() {
   const { user } = useAuth();
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [deleteTarget, setDeleteTarget] = useState(null);
 
   useEffect(() => {
     if (!user) return;
@@ -26,12 +28,15 @@ export default function Dashboard() {
     fetchUserPosts();
   }, [user]);
 
-  const handleDelete = async (id) => {
+  const confirmDelete = async () => {
+    if (!deleteTarget) return;
     try {
-      await api.delete(`/blogs/${id}`);
-      setPosts(posts.filter((p) => p._id !== id));
+      await api.delete(`/blogs/${deleteTarget._id}`);
+      setPosts((prev) => prev.filter((p) => p._id !== deleteTarget._id));
     } catch (err) {
       console.error(err);
+    } finally {
+      setDeleteTarget(null);
     }
   };
 
@@ -39,8 +44,13 @@ export default function Dashboard() {
     return (
       <AnimatedPage>
         <div className="max-w-6xl mx-auto px-6 py-20">
-          <p className="text-ink/60">Please log in to view your dashboard.</p>
-          <Link to="/login" className="text-cobalt font-medium">
+          <p className="text-ink/60 dark:text-paper/60">
+            Please log in to view your dashboard.
+          </p>
+          <Link
+            to="/login"
+            className="text-cobalt dark:text-mustard font-medium"
+          >
             Go to login
           </Link>
         </div>
@@ -59,7 +69,9 @@ export default function Dashboard() {
           />
           <div>
             <h1 className="font-display text-2xl font-700">{user.name}</h1>
-            <p className="text-ink/60 text-sm">{user.bio || "No bio yet."}</p>
+            <p className="text-ink/60 dark:text-paper/60 text-sm">
+              {user.bio || "No bio yet."}
+            </p>
           </div>
         </div>
 
@@ -68,7 +80,7 @@ export default function Dashboard() {
           <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
             <Link
               to="/create"
-              className="bg-cobalt text-paper px-4 py-2 rounded-md text-sm font-medium hover:bg-cobalt/90 transition-colors duration-200"
+              className="bg-cobalt dark:bg-mustard text-paper dark:text-ink px-4 py-2 rounded-md text-sm font-medium hover:bg-cobalt/90 dark:hover:bg-mustard/90 transition-colors duration-200"
             >
               New post
             </Link>
@@ -80,7 +92,7 @@ export default function Dashboard() {
             <div className="w-8 h-8 border-2 border-cobalt border-t-transparent rounded-full animate-spin" />
           </div>
         ) : (
-          <div className="divide-y divide-ink/10 border-t border-b border-ink/10">
+          <div className="divide-y divide-ink/10 dark:divide-paper/10 border-t border-b border-ink/10 dark:border-paper/10">
             <AnimatePresence>
               {posts.length === 0 ? (
                 <p className="text-ink/50 dark:text-paper/50 py-6 font-mono text-sm">
@@ -98,12 +110,12 @@ export default function Dashboard() {
                     <div>
                       <Link
                         to={`/blog/${post._id}`}
-                        className="font-medium hover:text-cobalt transition-colors duration-200"
+                        className="font-medium hover:text-cobalt dark:hover:text-mustard transition-colors duration-200"
                       >
                         {post.title}
                       </Link>
                       <div>
-                        <span className="font-mono text-xs text-ink/50">
+                        <span className="font-mono text-xs text-ink/50 dark:text-paper/50">
                           {post.category}
                         </span>
                       </div>
@@ -111,13 +123,13 @@ export default function Dashboard() {
                     <div className="flex gap-3">
                       <button
                         onClick={() => navigate(`/edit/${post._id}`)}
-                        className="text-sm bg-amber-200 p-2 rounded-md text-cobalt dark:text-amber-700 font-extrabold hover:underline"
+                        className="text-sm text-cobalt dark:text-mustard font-medium hover:underline"
                       >
                         Edit
                       </button>
                       <button
-                        onClick={() => handleDelete(post._id)}
-                        className="text-sm bg-red-600 p-2 rounded-md text-red-100 dark:text-amber-100 font-medium hover:underline"
+                        onClick={() => setDeleteTarget(post)}
+                        className="text-sm text-red-600 dark:text-red-400 font-medium hover:underline"
                       >
                         Delete
                       </button>
@@ -129,6 +141,15 @@ export default function Dashboard() {
           </div>
         )}
       </div>
+
+      <ConfirmModal
+        open={!!deleteTarget}
+        title="Delete this post?"
+        message={`"${deleteTarget?.title}" will be permanently removed. This can't be undone.`}
+        confirmLabel="Delete"
+        onConfirm={confirmDelete}
+        onCancel={() => setDeleteTarget(null)}
+      />
     </AnimatedPage>
   );
 }

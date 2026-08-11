@@ -1,14 +1,19 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import AnimatedPage from "../components/AnimatedPage";
+import ConfirmModal from "../components/ConfirmModal";
+import { useAuth } from "../context/AuthContext";
 import api from "../api/axios";
 
 export default function PostDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const { user } = useAuth();
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -23,6 +28,17 @@ export default function PostDetail() {
     };
     fetchPost();
   }, [id]);
+
+  const handleDelete = async () => {
+    try {
+      await api.delete(`/blogs/${id}`);
+      navigate("/dashboard");
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setShowDeleteConfirm(false);
+    }
+  };
 
   const date = post
     ? new Date(post.createdAt).toLocaleDateString("en-US", {
@@ -46,8 +62,10 @@ export default function PostDetail() {
     return (
       <AnimatedPage>
         <div className="max-w-2xl mx-auto px-6 py-32 text-center">
-          <p className="text-ink/60 mb-4">{error || "Post not found."}</p>
-          <Link to="/" className="text-cobalt font-medium">
+          <p className="text-ink/60 dark:text-paper/60 mb-4">
+            {error || "Post not found."}
+          </p>
+          <Link to="/" className="text-cobalt dark:text-mustard font-medium">
             Back to home
           </Link>
         </div>
@@ -55,17 +73,38 @@ export default function PostDetail() {
     );
   }
 
+  const isAuthor = user && post.author?._id === user._id;
+
   return (
     <AnimatedPage>
       <article className="max-w-3xl mx-auto px-6 py-16">
-        <motion.span
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="font-mono text-xs uppercase tracking-wide text-cobalt"
-        >
-          {post.category}
-        </motion.span>
+        <div className="flex items-center justify-between">
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="font-mono text-xs uppercase tracking-wide text-cobalt dark:text-mustard"
+          >
+            {post.category}
+          </motion.span>
+
+          {isAuthor && (
+            <div className="flex gap-4">
+              <Link
+                to={`/edit/${post._id}`}
+                className="text-sm text-cobalt dark:text-mustard font-medium hover:underline"
+              >
+                Edit
+              </Link>
+              <button
+                onClick={() => setShowDeleteConfirm(true)}
+                className="text-sm text-red-600 dark:text-red-400 font-medium hover:underline"
+              >
+                Delete
+              </button>
+            </div>
+          )}
+        </div>
 
         <motion.h1
           initial={{ opacity: 0, y: 15 }}
@@ -80,7 +119,7 @@ export default function PostDetail() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="flex items-center gap-3 mt-6 text-sm text-ink/60 font-mono"
+          className="flex items-center gap-3 mt-6 text-sm text-ink/60 dark:text-paper/60 font-mono"
         >
           <img
             src={post.author?.avatar}
@@ -111,7 +150,7 @@ export default function PostDetail() {
           {post.content}
         </div>
 
-        <div className="mt-16 pt-6 border-t border-ink/10">
+        <div className="mt-16 pt-6 border-t border-ink/10 dark:border-paper/10">
           <Link
             to="/"
             className="text-sm text-cobalt dark:text-mustard font-medium hover:underline"
@@ -120,6 +159,15 @@ export default function PostDetail() {
           </Link>
         </div>
       </article>
+
+      <ConfirmModal
+        open={showDeleteConfirm}
+        title="Delete this post?"
+        message="This will permanently remove the post. This can't be undone."
+        confirmLabel="Delete"
+        onConfirm={handleDelete}
+        onCancel={() => setShowDeleteConfirm(false)}
+      />
     </AnimatedPage>
   );
 }

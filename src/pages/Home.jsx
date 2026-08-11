@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useEffect } from "react";
 import HeroBanner from "../components/HeroBanner";
 import SearchFilter from "../components/SearchFilter";
 import PostCard from "../components/PostCard";
@@ -13,29 +13,28 @@ export default function Home() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const { data } = await api.get("/blogs");
-        setPosts(data);
-      } catch (err) {
-        setError("Could not load posts. Is the backend running?");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchPosts();
-  }, []);
+    const timeoutId = setTimeout(() => {
+      const fetchPosts = async () => {
+        setLoading(true);
+        setError("");
+        try {
+          const params = {};
+          if (search) params.search = search;
+          if (activeCategory !== "All") params.category = activeCategory;
 
-  const filteredPosts = useMemo(() => {
-    return posts.filter((post) => {
-      const matchesSearch = post.title
-        .toLowerCase()
-        .includes(search.toLowerCase());
-      const matchesCategory =
-        activeCategory === "All" || post.category === activeCategory;
-      return matchesSearch && matchesCategory;
-    });
-  }, [search, activeCategory, posts]);
+          const { data } = await api.get("/blogs", { params });
+          setPosts(data);
+        } catch (err) {
+          setError("Could not load posts. Is the backend running?");
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchPosts();
+    }, 400);
+
+    return () => clearTimeout(timeoutId);
+  }, [search, activeCategory]);
 
   return (
     <AnimatedPage>
@@ -53,13 +52,13 @@ export default function Home() {
           </div>
         ) : error ? (
           <p className="text-red-600 font-mono text-sm">{error}</p>
-        ) : filteredPosts.length === 0 ? (
+        ) : posts.length === 0 ? (
           <p className="text-ink/50 dark:text-paper/50 font-mono text-sm">
             No articles match your search.
           </p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-            {filteredPosts.map((post) => (
+            {posts.map((post) => (
               <PostCard key={post._id} post={post} />
             ))}
           </div>
