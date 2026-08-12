@@ -44,10 +44,12 @@ export default function Dashboard() {
 
   if (!user) return null; // ProtectedRoute already guards this page
 
-  const joinDate = new Date(user.createdAt).toLocaleDateString("en-US", {
-    month: "long",
-    year: "numeric",
-  });
+  const joinDate = user.createdAt
+    ? new Date(user.createdAt).toLocaleDateString("en-US", {
+        month: "long",
+        year: "numeric",
+      })
+    : "—";
 
   return (
     <AnimatedPage>
