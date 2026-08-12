@@ -5,6 +5,7 @@ import { useAuth } from "../context/AuthContext";
 import AnimatedPage from "../components/AnimatedPage";
 import { validateEmail, validatePassword } from "../utils/validation";
 import SEO from "../components/SEO";
+import toast from "react-hot-toast";
 
 export default function Register() {
   const [form, setForm] = useState({
@@ -47,10 +48,12 @@ export default function Register() {
       toast.success("Account created!");
       navigate("/dashboard");
     } catch (err) {
-      const msg = err.response?.data?.message || "Registration failed. Try again.";
+      const msg =
+        err.response?.data?.message || "Registration failed. Try again.";
+      setError(msg);
       toast.error(msg);
     } finally {
-      setLoading(false);  
+      setLoading(false);
     }
   };
 
