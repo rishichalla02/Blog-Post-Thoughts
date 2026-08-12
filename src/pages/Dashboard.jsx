@@ -6,6 +6,7 @@ import AnimatedPage from "../components/AnimatedPage";
 import ConfirmModal from "../components/ConfirmModal";
 import api from "../api/axios";
 import SEO from "../components/SEO";
+import toast from "react-hot-toast";
 
 export default function Dashboard() {
   const navigate = useNavigate();

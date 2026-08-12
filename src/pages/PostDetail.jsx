@@ -7,6 +7,7 @@ import ConfirmModal from "../components/ConfirmModal";
 import SEO from "../components/SEO";
 import { useAuth } from "../context/AuthContext";
 import api from "../api/axios";
+import toast from "react-hot-toast";
 
 export default function PostDetail() {
   const { id } = useParams();

@@ -5,6 +5,7 @@ import { categories } from "../data/mockData";
 import AnimatedPage from "../components/AnimatedPage";
 import api from "../api/axios";
 import SEO from "../components/SEO";
+import toast from "react-hot-toast";
 
 export default function CreateBlog() {
   const navigate = useNavigate();

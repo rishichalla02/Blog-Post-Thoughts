@@ -5,6 +5,7 @@ import { useAuth } from "../context/AuthContext";
 import AnimatedPage from "../components/AnimatedPage";
 import { validatePassword } from "../utils/validation";
 import SEO from "../components/SEO";
+import toast from "react-hot-toast";
 
 export default function EditProfile() {
   const { user, updateProfile } = useAuth();
