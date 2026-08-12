@@ -53,8 +53,8 @@ exports.getAllBlogs = async (req, res) => {
   }
 };
 
-// GET /api/blogs/user (protected)
-exports.getUserBlogs = async (req, res) => {
+// GET /api/blogs/my-blogs (protected) — alias of getUserBlogs
+exports.getMyBlogs = async (req, res) => {
   try {
     const blogs = await Blog.find({ author: req.user.id })
       .populate("author", "name email avatar")

@@ -14,6 +14,11 @@ const protect = (req, res, next) => {
     req.user = decoded; // { id, name, email }
     next();
   } catch (err) {
+    if (err.name === "TokenExpiredError") {
+      return res
+        .status(401)
+        .json({ message: "Session expired, please log in again" });
+    }
     return res.status(401).json({ message: "Not authorized, token invalid" });
   }
 };

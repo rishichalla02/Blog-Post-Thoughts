@@ -15,9 +15,9 @@ export default function Dashboard() {
 
   useEffect(() => {
     if (!user) return;
-    const fetchUserPosts = async () => {
+    const fetchMyBlogs = async () => {
       try {
-        const { data } = await api.get("/blogs/user");
+        const { data } = await api.get("/blogs/my-blogs");
         setPosts(data);
       } catch (err) {
         console.error(err);
@@ -25,7 +25,7 @@ export default function Dashboard() {
         setLoading(false);
       }
     };
-    fetchUserPosts();
+    fetchMyBlogs();
   }, [user]);
 
   const confirmDelete = async () => {
@@ -40,38 +40,44 @@ export default function Dashboard() {
     }
   };
 
-  if (!user) {
-    return (
-      <AnimatedPage>
-        <div className="max-w-6xl mx-auto px-6 py-20">
-          <p className="text-ink/60 dark:text-paper/60">
-            Please log in to view your dashboard.
-          </p>
-          <Link
-            to="/login"
-            className="text-cobalt dark:text-mustard font-medium"
-          >
-            Go to login
-          </Link>
-        </div>
-      </AnimatedPage>
-    );
-  }
+  if (!user) return null; // ProtectedRoute already guards this page
+
+  const joinDate = new Date(user.createdAt).toLocaleDateString("en-US", {
+    month: "long",
+    year: "numeric",
+  });
 
   return (
     <AnimatedPage>
       <div className="max-w-6xl mx-auto px-6 py-16">
-        <div className="flex items-center gap-4 mb-12">
+        <div className="flex flex-col md:flex-row md:items-center gap-6 mb-12">
           <img
             src={user.avatar}
             alt={user.name}
-            className="w-16 h-16 rounded-full object-cover"
+            className="w-20 h-20 rounded-full object-cover"
           />
-          <div>
+          <div className="flex-1">
             <h1 className="font-display text-2xl font-700">{user.name}</h1>
             <p className="text-ink/60 dark:text-paper/60 text-sm">
+              {user.email}
+            </p>
+            <p className="text-ink/60 dark:text-paper/60 text-sm mt-1">
               {user.bio || "No bio yet."}
             </p>
+          </div>
+          <div className="flex gap-6">
+            <div className="text-center">
+              <p className="font-display text-2xl font-700">{posts.length}</p>
+              <p className="text-xs text-ink/50 dark:text-paper/50 font-mono uppercase">
+                Posts
+              </p>
+            </div>
+            <div className="text-center">
+              <p className="font-display text-sm font-600 mt-1">{joinDate}</p>
+              <p className="text-xs text-ink/50 dark:text-paper/50 font-mono uppercase">
+                Joined
+              </p>
+            </div>
           </div>
         </div>
 
