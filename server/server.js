@@ -11,15 +11,18 @@ connectDB();
 
 const app = express();
 
-const allowedOrigins = [
-  process.env.CLIENT_URL, // production frontend
-  "http://localhost:5173", // local dev
-];
+const allowedOrigins = [process.env.CLIENT_URL, "http://localhost:5173"];
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (!origin) return callback(null, true);
+
+      const isAllowed =
+        allowedOrigins.includes(origin) ||
+        /^https:\/\/blog-post-thoughts.*\.vercel\.app$/.test(origin);
+
+      if (isAllowed) {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));
