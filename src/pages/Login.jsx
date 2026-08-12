@@ -5,6 +5,7 @@ import { useAuth } from "../context/AuthContext";
 import AnimatedPage from "../components/AnimatedPage";
 import SEO from "../components/SEO";
 import toast from "react-hot-toast";
+import PasswordInput from "../components/PasswordInput";
 
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -57,8 +58,7 @@ export default function Login() {
           </div>
           <div>
             <label className="block text-sm font-medium mb-1.5">Password</label>
-            <input
-              type="password"
+            <PasswordInput
               name="password"
               value={form.password}
               onChange={handleChange}

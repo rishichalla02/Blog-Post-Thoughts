@@ -6,6 +6,7 @@ import AnimatedPage from "../components/AnimatedPage";
 import { validateEmail, validatePassword } from "../utils/validation";
 import SEO from "../components/SEO";
 import toast from "react-hot-toast";
+import PasswordInput from "../components/PasswordInput";
 
 export default function Register() {
   const [form, setForm] = useState({
@@ -101,8 +102,7 @@ export default function Register() {
           </div>
           <div>
             <label className="block text-sm font-medium mb-1.5">Password</label>
-            <input
-              type="password"
+            <PasswordInput
               name="password"
               value={form.password}
               onChange={handleChange}
@@ -134,8 +134,7 @@ export default function Register() {
             <label className="block text-sm font-medium mb-1.5">
               Confirm password
             </label>
-            <input
-              type="password"
+            <PasswordInput
               name="confirmPassword"
               value={form.confirmPassword}
               onChange={handleChange}
