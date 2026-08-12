@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import toast from "react-hot-toast";
 import AnimatedPage from "../components/AnimatedPage";
 import ConfirmModal from "../components/ConfirmModal";
+import SEO from "../components/SEO";
 import { useAuth } from "../context/AuthContext";
 import api from "../api/axios";
 
@@ -32,9 +34,10 @@ export default function PostDetail() {
   const handleDelete = async () => {
     try {
       await api.delete(`/blogs/${id}`);
+      toast.success("Post deleted");
       navigate("/dashboard");
     } catch (err) {
-      console.error(err);
+      toast.error(err.response?.data?.message || "Could not delete post");
     } finally {
       setShowDeleteConfirm(false);
     }
@@ -61,6 +64,7 @@ export default function PostDetail() {
   if (error || !post) {
     return (
       <AnimatedPage>
+        <SEO title="Post not found" />
         <div className="max-w-2xl mx-auto px-6 py-32 text-center">
           <p className="text-ink/60 dark:text-paper/60 mb-4">
             {error || "Post not found."}
@@ -77,6 +81,12 @@ export default function PostDetail() {
 
   return (
     <AnimatedPage>
+      <SEO
+        title={post.title}
+        description={post.content?.slice(0, 150)}
+        image={post.thumbnail}
+        url={window.location.href}
+      />
       <article className="max-w-3xl mx-auto px-6 py-16">
         <div className="flex items-center justify-between">
           <motion.span
@@ -110,7 +120,7 @@ export default function PostDetail() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.05 }}
-          className="font-display text-4xl md:text-5xl font-700 leading-tight mt-3"
+          className="font-display text-3xl sm:text-4xl md:text-5xl font-700 leading-tight mt-3 break-words"
         >
           {post.title}
         </motion.h1>
@@ -124,11 +134,11 @@ export default function PostDetail() {
           <img
             src={post.author?.avatar}
             alt={post.author?.name}
-            className="w-8 h-8 rounded-full object-cover"
+            className="w-8 h-8 rounded-full object-cover shrink-0"
           />
-          <span>{post.author?.name}</span>
+          <span className="truncate">{post.author?.name}</span>
           <span>·</span>
-          <span>{date}</span>
+          <span className="whitespace-nowrap">{date}</span>
         </motion.div>
 
         {post.thumbnail && (
@@ -136,17 +146,21 @@ export default function PostDetail() {
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-10 rounded-lg overflow-hidden aspect-[16/9]"
+            className="mt-10 rounded-lg overflow-hidden aspect-[16/9] bg-ink/5 dark:bg-paper/5"
           >
             <img
               src={post.thumbnail}
               alt={post.title}
+              loading="lazy"
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+              }}
               className="w-full h-full object-cover"
             />
           </motion.div>
         )}
 
-        <div className="prose prose-lg max-w-none mt-10 text-ink/80 dark:text-paper/80 leading-relaxed whitespace-pre-line">
+        <div className="prose prose-lg max-w-none mt-10 text-ink/80 dark:text-paper/80 leading-relaxed whitespace-pre-line break-words">
           {post.content}
         </div>
 

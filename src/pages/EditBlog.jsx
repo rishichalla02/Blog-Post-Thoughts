@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { categories } from "../data/mockData";
 import AnimatedPage from "../components/AnimatedPage";
 import api from "../api/axios";
+import SEO from "../components/SEO";
 
 export default function EditBlog() {
   const { id } = useParams();
@@ -50,9 +51,10 @@ export default function EditBlog() {
     setLoading(true);
     try {
       await api.put(`/blogs/${id}`, form);
+      toast.success("Post updated!");
       navigate("/dashboard");
     } catch (err) {
-      setError(err.response?.data?.message || "Could not update post.");
+      toast.error(err.response?.data?.message || "Could not update post.");
     } finally {
       setLoading(false);
     }
@@ -70,6 +72,7 @@ export default function EditBlog() {
 
   return (
     <AnimatedPage>
+      <SEO title="Edit Post" />
       <div className="max-w-2xl mx-auto px-6 py-16">
         <h1 className="font-display text-3xl font-700 mb-8">Edit post</h1>
 

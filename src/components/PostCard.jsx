@@ -42,6 +42,11 @@ export default function PostCard({ post }) {
         <img
           src={post.thumbnail}
           alt={post.title}
+          loading="lazy"
+          onError={(e) => {
+            e.currentTarget.src =
+              "https://placehold.co/800x600/1C1B19/F7F3EC?text=No+Image";
+          }}
           className="w-full h-full object-cover"
         />
       </motion.div>

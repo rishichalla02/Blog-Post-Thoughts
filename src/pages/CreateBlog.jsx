@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { categories } from "../data/mockData";
 import AnimatedPage from "../components/AnimatedPage";
 import api from "../api/axios";
+import SEO from "../components/SEO";
 
 export default function CreateBlog() {
   const navigate = useNavigate();
@@ -29,9 +30,10 @@ export default function CreateBlog() {
     setLoading(true);
     try {
       await api.post("/blogs", form);
+      toast.success("Post published!");
       navigate("/dashboard");
     } catch (err) {
-      setError(err.response?.data?.message || "Could not publish post.");
+      toast.error(err.response?.data?.message || "Could not publish post.");
     } finally {
       setLoading(false);
     }
@@ -39,6 +41,7 @@ export default function CreateBlog() {
 
   return (
     <AnimatedPage>
+      <SEO title="Write a new post" />
       <div className="max-w-2xl mx-auto px-6 py-16">
         <h1 className="font-display text-3xl font-700 mb-8">
           Write a new post

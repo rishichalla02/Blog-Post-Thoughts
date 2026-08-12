@@ -3,6 +3,8 @@ import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 import AnimatedPage from "../components/AnimatedPage";
+import SEO from "../components/SEO";
+import toast from "react-hot-toast";
 
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -24,9 +26,12 @@ export default function Login() {
     setLoading(true);
     try {
       await login(form);
+      toast.success("Welcome back!");
       navigate("/dashboard");
     } catch (err) {
-      setError(err.response?.data?.message || "Login failed. Try again.");
+      const msg = err.response?.data?.message || "Login failed. Try again.";
+      setError(msg);
+      toast.error(msg);
     } finally {
       setLoading(false);
     }
@@ -34,6 +39,7 @@ export default function Login() {
 
   return (
     <AnimatedPage>
+      <SEO title="Log in" />
       <div className="max-w-md mx-auto px-6 py-20">
         <h1 className="font-display text-3xl font-700 mb-2">Welcome back</h1>
         <p className="text-ink/60 mb-8">Log in to continue writing.</p>

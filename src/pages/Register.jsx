@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 import AnimatedPage from "../components/AnimatedPage";
 import { validateEmail, validatePassword } from "../utils/validation";
+import SEO from "../components/SEO";
 
 export default function Register() {
   const [form, setForm] = useState({
@@ -43,13 +44,13 @@ export default function Register() {
     setLoading(true);
     try {
       await register(form);
+      toast.success("Account created!");
       navigate("/dashboard");
     } catch (err) {
-      setError(
-        err.response?.data?.message || "Registration failed. Try again.",
-      );
+      const msg = err.response?.data?.message || "Registration failed. Try again.";
+      toast.error(msg);
     } finally {
-      setLoading(false);
+      setLoading(false);  
     }
   };
 
@@ -63,6 +64,7 @@ export default function Register() {
 
   return (
     <AnimatedPage>
+      <SEO title="Create an account" />
       <div className="max-w-md mx-auto px-6 py-20">
         <h1 className="font-display text-3xl font-700 mb-2">
           Create an account

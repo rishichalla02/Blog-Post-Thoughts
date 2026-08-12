@@ -5,6 +5,7 @@ import { useAuth } from "../context/AuthContext";
 import AnimatedPage from "../components/AnimatedPage";
 import ConfirmModal from "../components/ConfirmModal";
 import api from "../api/axios";
+import SEO from "../components/SEO";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -33,8 +34,9 @@ export default function Dashboard() {
     try {
       await api.delete(`/blogs/${deleteTarget._id}`);
       setPosts((prev) => prev.filter((p) => p._id !== deleteTarget._id));
+      toast.success("Post deleted");
     } catch (err) {
-      console.error(err);
+      toast.error(err.response?.data?.message || "Could not delete post.");
     } finally {
       setDeleteTarget(null);
     }
@@ -49,6 +51,7 @@ export default function Dashboard() {
 
   return (
     <AnimatedPage>
+      <SEO title="Dashboard" />
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="flex flex-col md:flex-row md:items-center gap-6 mb-12">
           <img
@@ -65,7 +68,7 @@ export default function Dashboard() {
               {user.bio || "No bio yet."}
             </p>
           </div>
-          <div className="flex gap-6">
+          <div className="flex gap-6 flex-wrap">
             <div className="text-center">
               <p className="font-display text-2xl font-700">{posts.length}</p>
               <p className="text-xs text-ink/50 dark:text-paper/50 font-mono uppercase">

@@ -4,6 +4,7 @@ import SearchFilter from "../components/SearchFilter";
 import PostCard from "../components/PostCard";
 import AnimatedPage from "../components/AnimatedPage";
 import api from "../api/axios";
+import SEO from "../components/SEO";
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -38,6 +39,10 @@ export default function Home() {
 
   return (
     <AnimatedPage>
+      <SEO
+        title="Home"
+        description="Stories worth reading, written by people who build."
+      />
       <HeroBanner />
       <SearchFilter
         search={search}

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 import AnimatedPage from "../components/AnimatedPage";
 import { validatePassword } from "../utils/validation";
+import SEO from "../components/SEO";
 
 export default function EditProfile() {
   const { user, updateProfile } = useAuth();
@@ -52,7 +53,7 @@ export default function EditProfile() {
         payload.newPassword = form.newPassword;
       }
       await updateProfile(payload);
-      setSuccess("Profile updated successfully.");
+      toast.success("Profile updated!");
       setForm({
         ...form,
         currentPassword: "",
@@ -60,7 +61,7 @@ export default function EditProfile() {
         confirmNewPassword: "",
       });
     } catch (err) {
-      setError(err.response?.data?.message || "Could not update profile.");
+      toast.error(err.response?.data?.message || "Could not update profile.");
     } finally {
       setLoading(false);
     }
@@ -91,6 +92,7 @@ export default function EditProfile() {
 
   return (
     <AnimatedPage>
+      <SEO title="Edit profile" />
       <div className="max-w-xl mx-auto px-6 py-16">
         <h1 className="font-display text-3xl font-700 mb-2">Edit profile</h1>
         <p className="text-ink/60 dark:text-paper/60 mb-8">
