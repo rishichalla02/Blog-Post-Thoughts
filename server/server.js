@@ -6,6 +6,7 @@ const authRoutes = require("./routes/authRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 const userRoutes = require("./routes/userRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
+const commentRoutes = require("./routes/commentRoutes");
 
 connectDB();
 
@@ -36,6 +37,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/blogs", blogRoutes);
+app.use("/api/comments", commentRoutes);
 app.use("/api/users", userRoutes);
 
 app.get("/", (req, res) => res.send("Blog API is running"));

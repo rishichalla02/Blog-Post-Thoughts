@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import AnimatedPage from "../components/AnimatedPage";
 import ConfirmModal from "../components/ConfirmModal";
 import SEO from "../components/SEO";
+import CommentSection from "../components/CommentSection";
 import { useAuth } from "../context/AuthContext";
 import api from "../api/axios";
 import toast from "react-hot-toast";
@@ -172,6 +173,7 @@ export default function PostDetail() {
             ← Back to all posts
           </Link>
         </div>
+        <CommentSection postId={post._id} />
       </article>
 
       <ConfirmModal
