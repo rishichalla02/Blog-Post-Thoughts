@@ -36,13 +36,13 @@ export function AuthProvider({ children }) {
       password,
     });
     localStorage.setItem("token", data.token);
-    setUser(data.user);
+    await checkAuthStatus(); // refetch full profile instead of trusting the login response shape
   };
 
   const login = async ({ email, password }) => {
     const { data } = await api.post("/auth/login", { email, password });
     localStorage.setItem("token", data.token);
-    setUser(data.user);
+    await checkAuthStatus(); // same here
   };
 
   const updateProfile = async (payload) => {

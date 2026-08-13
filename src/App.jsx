@@ -11,6 +11,7 @@ import CreateBlog from "./pages/CreateBlog";
 import EditBlog from "./pages/EditBlog";
 import EditProfile from "./pages/EditProfile";
 import PostDetail from "./pages/PostDetail";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 export default function App() {
   const location = useLocation();
@@ -25,6 +26,7 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/blog/:id" element={<PostDetail />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
             <Route element={<ProtectedRoute />}>
               <Route path="/dashboard" element={<Dashboard />} />
