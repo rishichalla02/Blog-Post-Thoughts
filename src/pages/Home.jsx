@@ -52,8 +52,11 @@ export default function Home() {
       />
       <section className="max-w-6xl mx-auto px-6 pb-20 min-h-[200px]">
         {loading ? (
-          <div className="flex items-center justify-center py-20">
+          <div className="flex flex-col items-center justify-center py-20 gap-3">
             <div className="w-8 h-8 border-2 border-cobalt border-t-transparent rounded-full animate-spin" />
+            <p className="text-xs text-ink/40 dark:text-paper/40 font-mono">
+              Waking up the server — this can take up to 30s on first load
+            </p>
           </div>
         ) : error ? (
           <p className="text-red-600 font-mono text-sm">{error}</p>
