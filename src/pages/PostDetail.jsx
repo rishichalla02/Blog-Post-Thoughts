@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import AnimatedPage from "../components/AnimatedPage";
 import ConfirmModal from "../components/ConfirmModal";
 import SEO from "../components/SEO";
@@ -88,6 +89,31 @@ export default function PostDetail() {
         image={post.thumbnail}
         url={window.location.href}
       />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: post.title,
+            image: post.thumbnail ? [post.thumbnail] : undefined,
+            datePublished: post.createdAt,
+            dateModified: post.updatedAt || post.createdAt,
+            author: {
+              "@type": "Person",
+              name: post.author?.name,
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "RC-Blog",
+            },
+            description: post.content?.slice(0, 150),
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": window.location.href,
+            },
+          })}
+        </script>
+      </Helmet>
       <article className="max-w-3xl mx-auto px-6 py-16">
         <div className="flex items-center justify-between">
           <motion.span
