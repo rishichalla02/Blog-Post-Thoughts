@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import AnimatedPage from "../components/AnimatedPage";
 import SEO from "../components/SEO";
 
@@ -142,14 +141,13 @@ export default function PrivacyPolicy() {
               Contact
             </h2>
             <p>
-              For questions about this policy or your data, reach out via the
-              contact details on our{" "}
-              <Link
-                to="/"
+              For questions about this policy or your data, contact us at{" "}
+              <a
+                href="mailto:rishichalla4@gmail.com"
                 className="text-cobalt dark:text-mustard hover:underline"
               >
-                homepage
-              </Link>
+                rishichalla4@gmail.com
+              </a>
               .
             </p>
           </section>

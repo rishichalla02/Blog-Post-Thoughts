@@ -1,3 +1,5 @@
+import { Mail } from "lucide-react";
+
 export default function Footer() {
   return (
     <footer className="border-t border-ink/10 dark:border-paper/10 mt-24 transition-colors duration-300">
@@ -5,7 +7,15 @@ export default function Footer() {
         <span className="font-display text-lg text-ink dark:text-paper">
           RC-Blog
         </span>
-        <div className="flex items-center gap-6 text-sm text-ink/60 dark:text-paper/60">
+
+        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-sm text-ink/60 dark:text-paper/60">
+          <a
+            href="mailto:rishichalla4@gmail.com"
+            className="flex items-center gap-1.5 hover:text-cobalt dark:hover:text-mustard transition-colors duration-200"
+          >
+            <Mail size={14} />
+            rishichalla4@gmail.com
+          </a>
           <a
             href="/privacy-policy"
             className="hover:text-cobalt dark:hover:text-mustard transition-colors duration-200"
