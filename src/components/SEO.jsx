@@ -7,15 +7,19 @@ export default function SEO({ title, description, image, url }) {
   const desc =
     description ||
     "A publication for engineers, makers, and the curious in between.";
+  const canonicalUrl =
+    url ||
+    (typeof window !== "undefined" ? window.location.href.split("?")[0] : "");
 
   return (
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={desc} />
+      <link rel="canonical" href={canonicalUrl} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={desc} />
       {image && <meta property="og:image" content={image} />}
-      {url && <meta property="og:url" content={url} />}
+      {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
       <meta property="og:type" content="article" />
     </Helmet>
   );
