@@ -34,7 +34,7 @@ export default function HeroBanner() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % slides.length);
-    }, 12000); // 12 seconds
+    }, 12000);
 
     return () => clearInterval(interval);
   }, []);
@@ -54,27 +54,30 @@ export default function HeroBanner() {
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.5 }}
-        >
-          <p className="relative font-mono text-xs uppercase tracking-widest text-mustard mb-4">
-            {current.vol} — {current.tagline}
-          </p>
+      <div className="relative min-h-[220px] sm:min-h-[240px] md:min-h-[260px]">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.5 }}
+            className="absolute inset-0"
+          >
+            <p className="font-mono text-xs uppercase tracking-widest text-mustard mb-4">
+              {current.vol} — {current.tagline}
+            </p>
 
-          <h1 className="relative font-display text-4xl sm:text-5xl md:text-6xl font-700 leading-[1.05] max-w-3xl">
-            {current.headline}
-          </h1>
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-700 leading-[1.05] max-w-3xl">
+              {current.headline}
+            </h1>
 
-          <p className="relative text-ink/60 dark:text-paper/60 mt-5 max-w-xl text-lg">
-            {current.sub}
-          </p>
-        </motion.div>
-      </AnimatePresence>
+            <p className="text-ink/60 dark:text-paper/60 mt-5 max-w-xl text-lg">
+              {current.sub}
+            </p>
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </section>
   );
 }
