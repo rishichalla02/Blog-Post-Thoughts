@@ -2,7 +2,7 @@ const asyncHandler = require("express-async-handler");
 const Blog = require("../models/Blog");
 
 exports.createBlog = asyncHandler(async (req, res) => {
-  const { title, category, thumbnail, content } = req.body;
+  const { title, category, tags, thumbnail, content } = req.body;
 
   if (!title || !category || !content) {
     res.status(400);
@@ -12,10 +12,12 @@ exports.createBlog = asyncHandler(async (req, res) => {
   const blog = await Blog.create({
     title,
     category,
+    tags: Array.isArray(tags) ? tags : [],
     thumbnail,
     content,
     author: req.user.id,
   });
+
   const populated = await blog.populate("author", "name email avatar");
   res.status(201).json(populated);
 });
@@ -70,7 +72,7 @@ exports.updateBlog = asyncHandler(async (req, res) => {
     throw new Error("Not authorized to edit this post");
   }
 
-  const { title, category, thumbnail, content } = req.body;
+  const { title, category, tags, thumbnail, content } = req.body;
   if (!title || !category || !content) {
     res.status(400);
     throw new Error("Title, category and content are required");
@@ -78,6 +80,7 @@ exports.updateBlog = asyncHandler(async (req, res) => {
 
   blog.title = title;
   blog.category = category;
+  blog.tags = Array.isArray(tags) ? tags : blog.tags;
   blog.thumbnail = thumbnail ?? blog.thumbnail;
   blog.content = content;
 
@@ -99,4 +102,24 @@ exports.deleteBlog = asyncHandler(async (req, res) => {
 
   await blog.deleteOne();
   res.status(200).json({ message: "Post deleted" });
+});
+
+// PUT /api/blogs/:id/like (protected)
+exports.toggleLike = asyncHandler(async (req, res) => {
+  const blog = await Blog.findById(req.params.id);
+  if (!blog) {
+    res.status(404);
+    throw new Error("Post not found");
+  }
+
+  const alreadyLiked = blog.likes.some((id) => id.toString() === req.user.id);
+
+  if (alreadyLiked) {
+    blog.likes = blog.likes.filter((id) => id.toString() !== req.user.id);
+  } else {
+    blog.likes.push(req.user.id);
+  }
+
+  await blog.save();
+  res.status(200).json({ likes: blog.likes.length, liked: !alreadyLiked });
 });

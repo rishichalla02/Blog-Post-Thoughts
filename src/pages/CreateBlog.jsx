@@ -12,6 +12,7 @@ export default function CreateBlog() {
   const [form, setForm] = useState({
     title: "",
     category: categories[1],
+    tags: "",
     thumbnail: "",
     content: "",
   });
@@ -30,7 +31,14 @@ export default function CreateBlog() {
     }
     setLoading(true);
     try {
-      await api.post("/blogs", form);
+      const payload = {
+        ...form,
+        tags: form.tags
+          .split(",")
+          .map((t) => t.trim())
+          .filter(Boolean),
+      };
+      await api.post("/blogs", payload);
       toast.success("Post published!");
       navigate("/dashboard");
     } catch (err) {
@@ -76,6 +84,23 @@ export default function CreateBlog() {
                   </option>
                 ))}
             </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-1.5">
+              Tags{" "}
+              <span className="text-ink/40 dark:text-paper/40 font-normal">
+                (comma-separated)
+              </span>
+            </label>
+            <input
+              type="text"
+              name="tags"
+              value={form.tags}
+              onChange={handleChange}
+              placeholder="mongodb, jwt, cors"
+              className="w-full px-4 py-2.5 rounded-md border border-black dark:border-white bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
+            />
           </div>
 
           <div>

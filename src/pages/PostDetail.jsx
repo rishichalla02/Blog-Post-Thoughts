@@ -7,6 +7,9 @@ import ConfirmModal from "../components/ConfirmModal";
 import SEO from "../components/SEO";
 import CommentSection from "../components/CommentSection";
 import { useAuth } from "../context/AuthContext";
+import { getReadingTime } from "../utils/readingTime";
+import LikeButton from "../components/LikeButton";
+import RelatedPosts from "../components/RelatedPosts";
 import api from "../api/axios";
 import toast from "react-hot-toast";
 
@@ -156,7 +159,7 @@ export default function PostDetail() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="flex items-center gap-3 mt-6 text-sm text-ink/60 dark:text-paper/60 font-mono"
+          className="flex flex-wrap items-center gap-3 mt-6 text-sm text-ink/60 dark:text-paper/60 font-mono"
         >
           <img
             src={post.author?.avatar}
@@ -166,6 +169,10 @@ export default function PostDetail() {
           <span className="truncate">{post.author?.name}</span>
           <span>·</span>
           <span className="whitespace-nowrap">{date}</span>
+          <span>·</span>
+          <span className="whitespace-nowrap">
+            {getReadingTime(post.content)}
+          </span>
         </motion.div>
 
         {post.thumbnail && (
@@ -187,18 +194,39 @@ export default function PostDetail() {
           </motion.div>
         )}
 
+        {post.tags && post.tags.length > 0 && (
+          <div className="flex flex-wrap gap-2 mt-6">
+            {post.tags.map((tag) => (
+              <span
+                key={tag}
+                className="text-xs font-mono px-2.5 py-1 rounded-full bg-ink/5 dark:bg-paper/10 text-ink/60 dark:text-paper/60"
+              >
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )}
+
         <div className="prose prose-lg max-w-none mt-10 text-ink/80 dark:text-paper/80 leading-relaxed whitespace-pre-line break-words">
           {post.content}
         </div>
 
-        <div className="mt-16 pt-6 border-t border-ink/10 dark:border-paper/10">
+        <div className="mt-16 pt-6 border-t border-ink/10 dark:border-paper/10 flex items-center justify-between">
           <Link
             to="/"
             className="text-sm text-cobalt dark:text-mustard font-medium hover:underline"
           >
             ← Back to all posts
           </Link>
+          <LikeButton
+            postId={post._id}
+            initialLikes={post.likes?.length || 0}
+            initialLiked={user ? post.likes?.includes(user._id) : false}
+          />
         </div>
+
+        <RelatedPosts category={post.category} excludeId={post._id} />
+
         <CommentSection postId={post._id} />
       </article>
 
