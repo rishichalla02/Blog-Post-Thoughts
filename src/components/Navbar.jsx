@@ -24,6 +24,7 @@ export default function Navbar() {
 
   const navLinks = [
     { to: "/", label: "Home" },
+    { to: "/about", label: "About" },
     ...(user ? [{ to: "/dashboard", label: "Dashboard" }] : []),
     ...(user ? [{ to: "/create", label: "Write" }] : []),
   ];
