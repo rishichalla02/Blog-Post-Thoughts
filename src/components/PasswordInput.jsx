@@ -18,6 +18,13 @@ export default function PasswordInput({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        autoComplete={
+          name === "confirmPassword" ||
+          name === "newPassword" ||
+          name === "confirmNewPassword"
+            ? "new-password"
+            : "current-password"
+        }
         className={`${className} pr-11`}
       />
       <button

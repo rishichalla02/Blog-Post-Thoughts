@@ -87,6 +87,7 @@ export default function Register() {
               name="name"
               value={form.name}
               onChange={handleChange}
+              autoComplete="name"
               className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
@@ -97,6 +98,7 @@ export default function Register() {
               name="email"
               value={form.email}
               onChange={handleChange}
+              autoComplete="email"
               className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
           </div>
@@ -106,6 +108,7 @@ export default function Register() {
               name="password"
               value={form.password}
               onChange={handleChange}
+              autoComplete="new-password"
               className="w-full px-4 py-2.5 rounded-md border border-ink/15 dark:border-paper/15 bg-white dark:bg-ink/40 text-ink dark:text-paper focus:outline-none focus:ring-2 focus:ring-cobalt/40 transition-shadow duration-200"
             />
             {form.password && (
