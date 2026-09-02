@@ -71,7 +71,7 @@ export default function Home() {
               <>
                 <PostCard key={post._id} post={post} />
                 {i === 5 && posts.length > 6 && (
-                  <div key="ad-slot-home" className="col-span-full my-4">
+                  <div key="ad-slot-home" className="my-10 min-h-[100px] flex items-center justify-center">
                     <AdBanner slot="8907364131" />
                   </div>
                 )}

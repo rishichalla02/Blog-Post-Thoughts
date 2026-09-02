@@ -208,7 +208,7 @@ export default function PostDetail() {
           </div>
         )}
 
-        <div className="my-10">
+        <div className="my-10 min-h-[100px] flex items-center justify-center">
           <AdBanner slot="1028874117" />
         </div>
 
@@ -234,7 +234,7 @@ export default function PostDetail() {
           />
         </div>
 
-        <div className="my-10">
+        <div className="my-10 min-h-[100px] flex items-center justify-center">
           <AdBanner slot="6089629109" />
         </div>
 
