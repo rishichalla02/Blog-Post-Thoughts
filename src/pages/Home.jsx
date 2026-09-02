@@ -5,6 +5,7 @@ import PostCard from "../components/PostCard";
 import AnimatedPage from "../components/AnimatedPage";
 import api from "../api/axios";
 import SEO from "../components/SEO";
+import AdBanner from "../components/AdBanner";
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -66,8 +67,15 @@ export default function Home() {
           </p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-            {posts.map((post) => (
-              <PostCard key={post._id} post={post} />
+            {posts.map((post, i) => (
+              <>
+                <PostCard key={post._id} post={post} />
+                {i === 5 && posts.length > 6 && (
+                  <div key="ad-slot-home" className="col-span-full my-4">
+                    <AdBanner slot="8907364131" />
+                  </div>
+                )}
+              </>
             ))}
           </div>
         )}
