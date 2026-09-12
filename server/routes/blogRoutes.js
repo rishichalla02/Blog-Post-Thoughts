@@ -5,6 +5,7 @@ const {
   createBlog,
   getAllBlogs,
   getMyBlogs,
+  getSuggestions,
   getBlogById,
   updateBlog,
   deleteBlog,
@@ -13,6 +14,7 @@ const {
 
 router.get("/", getAllBlogs);
 router.get("/my-blogs", protect, getMyBlogs);
+router.get("/suggestions", getSuggestions);
 router.get("/:id", getBlogById);
 router.post("/", protect, createBlog);
 router.put("/:id", protect, updateBlog);

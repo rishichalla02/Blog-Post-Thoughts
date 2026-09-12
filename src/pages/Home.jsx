@@ -66,18 +66,30 @@ export default function Home() {
             No articles match your search.
           </p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-            {posts.map((post, i) => (
-              <>
+          <>
+            <p className="text-xs text-ink/40 dark:text-paper/40 font-mono uppercase tracking-wide mb-6">
+              {posts.length} article{posts.length === 1 ? "" : "s"}
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+              {posts.slice(0, 6).map((post) => (
                 <PostCard key={post._id} post={post} />
-                {i === 5 && posts.length > 6 && (
-                  <div key="ad-slot-home" className="col-span-full my-4">
-                    <AdBanner slot="8907364131" />
-                  </div>
-                )}
-              </>
-            ))}
-          </div>
+              ))}
+            </div>
+
+            {posts.length > 6 && (
+              <div className="my-10 min-h-[100px] flex items-center justify-center">
+                <AdBanner slot="8907364131" />
+              </div>
+            )}
+
+            {posts.length > 6 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+                {posts.slice(6).map((post) => (
+                  <PostCard key={post._id} post={post} />
+                ))}
+              </div>
+            )}
+          </>
         )}
       </section>
     </AnimatedPage>

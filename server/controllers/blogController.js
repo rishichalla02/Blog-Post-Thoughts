@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Blog = require("../models/Blog");
+const User = require("../models/User");
 
 exports.createBlog = asyncHandler(async (req, res) => {
   const { title, category, tags, thumbnail, content } = req.body;
@@ -27,11 +28,18 @@ exports.getAllBlogs = asyncHandler(async (req, res) => {
   const query = {};
 
   if (search) {
+    const matchingUsers = await User.find({
+      name: { $regex: search, $options: "i" },
+    }).select("_id");
+    const userIds = matchingUsers.map((u) => u._id);
+
     query.$or = [
       { title: { $regex: search, $options: "i" } },
       { content: { $regex: search, $options: "i" } },
+      { author: { $in: userIds } },
     ];
   }
+
   if (category && category !== "All") {
     query.category = category;
   }
@@ -39,6 +47,7 @@ exports.getAllBlogs = asyncHandler(async (req, res) => {
   const blogs = await Blog.find(query)
     .populate("author", "name email avatar")
     .sort({ createdAt: -1 });
+
   res.status(200).json(blogs);
 });
 
@@ -122,4 +131,30 @@ exports.toggleLike = asyncHandler(async (req, res) => {
 
   await blog.save();
   res.status(200).json({ likes: blog.likes.length, liked: !alreadyLiked });
+});
+
+// GET /api/blogs/suggestions?q= (public)
+exports.getSuggestions = asyncHandler(async (req, res) => {
+  const { q } = req.query;
+
+  if (!q || q.trim().length < 3) {
+    return res.status(200).json([]);
+  }
+
+  const matchingUsers = await User.find({
+    name: { $regex: q, $options: "i" },
+  }).select("_id");
+  const userIds = matchingUsers.map((u) => u._id);
+
+  const blogs = await Blog.find({
+    $or: [
+      { title: { $regex: q, $options: "i" } },
+      { author: { $in: userIds } },
+    ],
+  })
+    .populate("author", "name")
+    .select("title author")
+    .limit(5);
+
+  res.status(200).json(blogs);
 });
