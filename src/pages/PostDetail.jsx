@@ -216,10 +216,6 @@ export default function PostDetail() {
           {post.content}
         </div>
 
-        <div className="prose prose-lg max-w-none mt-10 text-ink/80 dark:text-paper/80 leading-relaxed whitespace-pre-line break-words">
-          {post.content}
-        </div>
-
         <div className="mt-16 pt-6 border-t border-ink/10 dark:border-paper/10 flex items-center justify-between">
           <Link
             to="/"
