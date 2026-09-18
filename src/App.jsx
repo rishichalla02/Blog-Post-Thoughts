@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import ProtectedRoute from "./components/ProtectedRoute";
 import About from "./pages/About";
 import Home from "./pages/Home";
+import ScrollToTop from "./components/ScrollToTop";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
@@ -40,6 +41,7 @@ export default function App() {
         </AnimatePresence>
       </main>
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }
