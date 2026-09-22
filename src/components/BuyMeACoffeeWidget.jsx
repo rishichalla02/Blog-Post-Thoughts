@@ -21,7 +21,7 @@ export default function BuyMeACoffeeWidget() {
       script.setAttribute("data-color", "#FF813F");
       script.setAttribute("data-position", "Right");
       script.setAttribute("data-x_margin", "18");
-      script.setAttribute("data-y_margin", "18");
+      script.setAttribute("data-y_margin", "80");
       script.async = true;
 
       document.body.appendChild(script);
