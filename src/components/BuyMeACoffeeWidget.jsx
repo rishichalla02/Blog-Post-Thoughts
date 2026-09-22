@@ -1,40 +1,21 @@
 // src/components/BuyMeACoffeeWidget.jsx
-import { useEffect } from "react";
+import React from "react";
 
 export default function BuyMeACoffeeWidget() {
-  useEffect(() => {
-    // Check if script is already present
-    const existingScript = document.getElementById("bmc-widget-script");
-
-    if (!existingScript) {
-      const script = document.createElement("script");
-      script.id = "bmc-widget-script";
-      script.src = "https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js";
-      script.setAttribute("data-name", "BMC-Widget");
-      script.setAttribute("data-cfasync", "false");
-      script.setAttribute("data-id", "rishi.challa");
-      script.setAttribute("data-description", "Support me on Buy me a coffee!");
-      script.setAttribute(
-        "data-message",
-        "Buy me Coffee and Know about Developer !",
-      );
-      script.setAttribute("data-color", "#FF813F");
-      script.setAttribute("data-position", "Right");
-      script.setAttribute("data-x_margin", "80");
-      script.setAttribute("data-y_margin", "18");
-      script.async = true;
-
-      document.body.appendChild(script);
-    }
-
-    return () => {
-      // Optional cleanup on unmount
-      const scriptToRemove = document.getElementById("bmc-widget-script");
-      const widgetFrame = document.getElementById("bmc-w415");
-      if (scriptToRemove) scriptToRemove.remove();
-      if (widgetFrame) widgetFrame.remove();
-    };
-  }, []);
-
-  return null;
+  return (
+    <a
+      href="https://www.buymeacoffee.com/rishi.challa"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="fixed bottom-20 right-5 z-50 flex items-center gap-2 bg-[#FF813F] text-white font-sans font-semibold text-sm px-4 py-2.5 rounded-full shadow-lg hover:opacity-90 hover:scale-105 transition-all duration-200 border border-white/20"
+      style={{ boxShadow: "0px 4px 12px rgba(0,0,0,0.15)" }}
+    >
+      <img
+        src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg"
+        alt="Buy me a coffee"
+        className="w-5 h-5"
+      />
+      <span>Buy me Coffee</span>
+    </a>
+  );
 }
