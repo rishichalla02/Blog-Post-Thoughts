@@ -188,6 +188,19 @@ export default function PrivacyPolicy() {
 
           <section>
             <h2 className="font-display text-xl font-600 text-ink dark:text-paper mb-2">
+              Affiliate Disclosure
+            </h2>
+            <p>
+              RC-Blog is a participant in the Amazon Services LLC Associates
+              Program, an affiliate advertising program designed to provide a
+              means for sites to earn advertising fees by advertising and
+              linking to Amazon.com. As an Amazon Associate, I earn from
+              qualifying purchases.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="font-display text-xl font-600 text-ink dark:text-paper mb-2">
               Changes to this policy
             </h2>
             <p>
