@@ -85,38 +85,42 @@ export default function Home() {
               ))}
             </div> */}
 
-            {/* First 3 Posts */}
+            {/* 1. First Group: Posts 1 to 3 */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
               {posts.slice(0, 3).map((post) => (
                 <PostCard key={post._id} post={post} />
               ))}
             </div>
 
-            {/* Amazon Ad Banner showing after 3 posts */}
+            {/* Amazon Ad Banner after 3 posts */}
             {posts.length > 3 && (
               <div className="my-10 flex justify-center">
                 <AmazonAdCard product={adProduct} />
               </div>
             )}
 
-            {/* Remaining Posts */}
+            {/* 2. Second Group: Posts 4 to 6 */}
             {posts.length > 3 && (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-                {posts.slice(3).map((post) => (
+                {posts.slice(3, 6).map((post) => (
                   <PostCard key={post._id} post={post} />
                 ))}
               </div>
             )}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-              {posts.slice(0, 6).map((post) => (
-                <PostCard key={post._id} post={post} />
-              ))}
-            </div>
-
+            {/* AAds Banner after 6 posts */}
             {posts.length > 6 && (
               <div className="my-10 min-h-[100px] flex items-center justify-center">
                 <AAdsBanner />
+              </div>
+            )}
+
+            {/* 3. Third Group: Posts 7 and beyond */}
+            {posts.length > 6 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+                {posts.slice(6).map((post) => (
+                  <PostCard key={post._id} post={post} />
+                ))}
               </div>
             )}
 
