@@ -7,7 +7,7 @@ import api from "../api/axios";
 import SEO from "../components/SEO";
 // import AdBanner from "../components/AdBanner";
 // import AdsterraBanner from "../components/AdsterraBanner";
-import AAdsterraBanner from "../components/AdsterraBanner";
+import AAdsBanner from "../components/AAdsBanner";
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -81,7 +81,7 @@ export default function Home() {
             {posts.length > 6 && (
               <div className="my-10 min-h-[100px] flex items-center justify-center">
                 {/* <AdsterraBanner /> */}
-                <AAdsterraBanner />
+                <AAdsBanner />
               </div>
             )}
 
