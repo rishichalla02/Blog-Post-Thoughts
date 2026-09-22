@@ -5,7 +5,8 @@ import PostCard from "../components/PostCard";
 import AnimatedPage from "../components/AnimatedPage";
 import api from "../api/axios";
 import SEO from "../components/SEO";
-import AdBanner from "../components/AdBanner";
+// import AdBanner from "../components/AdBanner";
+import AdsterraBanner from "../components/AdsterraBanner";
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -78,9 +79,15 @@ export default function Home() {
 
             {posts.length > 6 && (
               <div className="my-10 min-h-[100px] flex items-center justify-center">
-                <AdBanner slot="8907364131" />
+                <AdsterraBanner />
               </div>
             )}
+
+            {/* {posts.length > 6 && (
+              <div className="my-10 min-h-[100px] flex items-center justify-center">
+                <AdBanner slot="8907364131" />
+              </div>
+            )} */}
 
             {posts.length > 6 && (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
