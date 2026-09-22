@@ -261,13 +261,7 @@ export default function PostDetail() {
           <AAdsBanner />
         </div>
 
-        <AmazonAdCard
-          title="Recommended Tool"
-          productName="Keychron K2 Mechanical Keyboard"
-          productImage="https://m.media-amazon.com/images/I/61N3mC35GLL._AC_SL1500_.jpg"
-          affiliateUrl="https://amzn.to/YOUR_LINK"
-          price="See on Amazon"
-        />
+        <AmazonAdCard product={post.affiliateProduct} />
 
         {/* <div className="my-10">
           <AdBanner slot="6089629109" />

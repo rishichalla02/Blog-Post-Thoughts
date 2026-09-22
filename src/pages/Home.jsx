@@ -40,6 +40,10 @@ export default function Home() {
     return () => clearTimeout(timeoutId);
   }, [search, activeCategory]);
 
+  const featuredAffiliateProduct = posts.find(
+    (p) => p.affiliateProduct && p.affiliateProduct.affiliateUrl,
+  )?.affiliateProduct;
+
   return (
     <AnimatedPage>
       <SEO
@@ -78,20 +82,14 @@ export default function Home() {
               ))}
             </div>
 
+            {posts.length > 3 && featuredAffiliateProduct && (
+              <div className="my-10 flex justify-center">
+                <AmazonAdCard product={featuredAffiliateProduct} />
+              </div>
+            )}
             {posts.length > 6 && (
               <div className="my-10 min-h-[100px] flex items-center justify-center">
                 <AAdsBanner />
-              </div>
-            )}
-            {posts.length > 3 && (
-              <div className="my-10 flex justify-center">
-                <AmazonAdCard
-                  title="Recommended Developer Gear"
-                  productName="Clean Code: A Handbook of Agile Software Craftsmanship"
-                  productImage="https://m.media-amazon.com/images/I/71T7aD3E83L._AC_UF1000,1000_QL80_.jpg"
-                  affiliateUrl="https://amzn.to/your_affiliate_id"
-                  price="Amazon"
-                />
               </div>
             )}
 
