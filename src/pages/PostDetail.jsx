@@ -6,7 +6,8 @@ import AnimatedPage from "../components/AnimatedPage";
 import ConfirmModal from "../components/ConfirmModal";
 import SEO from "../components/SEO";
 // import AdBanner from "../components/AdBanner";
-import AdsterraBanner from "../components/AdsterraBanner";
+// import AdsterraBanner from "../components/AdsterraBanner";
+import AAdsterraBanner from "../components/AdsterraBanner";
 import CommentSection from "../components/CommentSection";
 import { useAuth } from "../context/AuthContext";
 import { getReadingTime } from "../utils/readingTime";
@@ -210,7 +211,8 @@ export default function PostDetail() {
         )}
 
         <div className="my-10">
-          <AdsterraBanner />
+          {/* <AdsterraBanner /> */}
+          <AAdsterraBanner />
         </div>
 
         {/* <div className="my-10">
@@ -256,9 +258,7 @@ export default function PostDetail() {
           />
         </div>
 
-        <div className="my-10">
-          <AdsterraBanner />
-        </div>
+        <div className="my-10">{/* <AdsterraBanner /> */}</div>
         {/* <div className="my-10">
           <AdBanner slot="6089629109" />
         </div> */}
