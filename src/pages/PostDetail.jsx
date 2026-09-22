@@ -213,9 +213,9 @@ export default function PostDetail() {
           <AdsterraBanner />
         </div>
 
-        <div className="my-10">
+        {/* <div className="my-10">
           <AdBanner slot="1028874117" />
-        </div>
+        </div> */}
 
         <div className="prose prose-lg max-w-none mt-10 text-ink/80 dark:text-paper/80 leading-relaxed whitespace-pre-line break-words">
           {post.content}
