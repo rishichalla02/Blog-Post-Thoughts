@@ -76,17 +76,35 @@ export default function Home() {
             <p className="text-xs text-ink/40 dark:text-paper/40 font-mono uppercase tracking-wide mb-6">
               {posts.length} article{posts.length === 1 ? "" : "s"}
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+            {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
               {posts.slice(0, 6).map((post) => (
+                <PostCard key={post._id} post={post} />
+              ))}
+            </div> */}
+
+            {/* Render first 3 posts */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+              {posts.slice(0, 3).map((post) => (
                 <PostCard key={post._id} post={post} />
               ))}
             </div>
 
+            {/* Show Amazon Card after 3 posts */}
             {posts.length > 3 && featuredAffiliateProduct && (
               <div className="my-10 flex justify-center">
                 <AmazonAdCard product={featuredAffiliateProduct} />
               </div>
             )}
+
+            {/* Render remaining posts (index 3 and beyond) */}
+            {posts.length > 3 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+                {posts.slice(3).map((post) => (
+                  <PostCard key={post._id} post={post} />
+                ))}
+              </div>
+            )}
+
             {posts.length > 6 && (
               <div className="my-10 min-h-[100px] flex items-center justify-center">
                 <AAdsBanner />
