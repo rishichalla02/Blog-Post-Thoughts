@@ -6,7 +6,6 @@ import AnimatedPage from "../components/AnimatedPage";
 import ConfirmModal from "../components/ConfirmModal";
 import SEO from "../components/SEO";
 // import AdBanner from "../components/AdBanner";
-// import AdsterraBanner from "../components/AdsterraBanner";
 import AAdsBanner from "../components/AAdsBanner";
 import CommentSection from "../components/CommentSection";
 import { useAuth } from "../context/AuthContext";
@@ -211,7 +210,6 @@ export default function PostDetail() {
         )}
 
         <div className="my-10">
-          {/* <AdsterraBanner /> */}
           <AAdsBanner />
         </div>
 
@@ -259,7 +257,6 @@ export default function PostDetail() {
         </div>
 
         <div className="my-10">
-          {/* <AdsterraBanner /> */}
           <AAdsBanner />
         </div>
         {/* <div className="my-10">
