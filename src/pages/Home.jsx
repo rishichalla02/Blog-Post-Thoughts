@@ -7,6 +7,7 @@ import api from "../api/axios";
 import SEO from "../components/SEO";
 // import AdBanner from "../components/AdBanner";
 import AAdsBanner from "../components/AAdsBanner";
+import { AMAZON_ADS } from "../data/amazonAds";
 import AmazonAdCard from "../components/AmazonAdCard";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const defaultAd = AMAZON_ADS[0];
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -82,21 +84,21 @@ export default function Home() {
               ))}
             </div> */}
 
-            {/* Render first 3 posts */}
+            {/* First 3 Posts */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
               {posts.slice(0, 3).map((post) => (
                 <PostCard key={post._id} post={post} />
               ))}
             </div>
 
-            {/* Show Amazon Card after 3 posts */}
-            {posts.length > 3 && featuredAffiliateProduct && (
+            {/* Amazon Ad Banner showing after 3 posts */}
+            {posts.length > 3 && (
               <div className="my-10 flex justify-center">
-                <AmazonAdCard product={featuredAffiliateProduct} />
+                <AmazonAdCard product={defaultAd} />
               </div>
             )}
 
-            {/* Render remaining posts (index 3 and beyond) */}
+            {/* Remaining Posts */}
             {posts.length > 3 && (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
                 {posts.slice(3).map((post) => (
@@ -117,13 +119,13 @@ export default function Home() {
               </div>
             )} */}
 
-            {posts.length > 6 && (
+            {/* {posts.length > 6 && (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
                 {posts.slice(6).map((post) => (
                   <PostCard key={post._id} post={post} />
                 ))}
               </div>
-            )}
+            )} */}
           </>
         )}
       </section>

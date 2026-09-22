@@ -7,6 +7,7 @@ import ConfirmModal from "../components/ConfirmModal";
 import SEO from "../components/SEO";
 // import AdBanner from "../components/AdBanner";
 import AAdsBanner from "../components/AAdsBanner";
+import { getRandomAmazonAd } from "../data/amazonAds";
 import AmazonAdCard from "../components/AmazonAdCard";
 import CommentSection from "../components/CommentSection";
 import { useAuth } from "../context/AuthContext";
@@ -24,6 +25,7 @@ export default function PostDetail() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const adProduct = getRandomAmazonAd();
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -214,6 +216,11 @@ export default function PostDetail() {
           <AAdsBanner />
         </div>
 
+        {/* Automatically displays an Amazon Ad at the bottom of the article */}
+        <div className="my-10 flex justify-center">
+          <AmazonAdCard product={adProduct} />
+        </div>
+
         {/* <div className="my-10">
           <AdBanner slot="1028874117" />
         </div> */}
@@ -261,7 +268,10 @@ export default function PostDetail() {
           <AAdsBanner />
         </div>
 
-        <AmazonAdCard product={post.affiliateProduct} />
+        {/* Automatically displays an Amazon Ad at the bottom of the article */}
+        <div className="my-10 flex justify-center">
+          <AmazonAdCard product={adProduct} />
+        </div>
 
         {/* <div className="my-10">
           <AdBanner slot="6089629109" />
