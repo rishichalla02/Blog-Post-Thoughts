@@ -7,6 +7,7 @@ import api from "../api/axios";
 import SEO from "../components/SEO";
 // import AdBanner from "../components/AdBanner";
 import AAdsBanner from "../components/AAdsBanner";
+import AmazonAdCard from "../components/AmazonAdCard";
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -80,6 +81,17 @@ export default function Home() {
             {posts.length > 6 && (
               <div className="my-10 min-h-[100px] flex items-center justify-center">
                 <AAdsBanner />
+              </div>
+            )}
+            {posts.length > 3 && (
+              <div className="my-10 flex justify-center">
+                <AmazonAdCard
+                  title="Recommended Developer Gear"
+                  productName="Clean Code: A Handbook of Agile Software Craftsmanship"
+                  productImage="https://m.media-amazon.com/images/I/71T7aD3E83L._AC_UF1000,1000_QL80_.jpg"
+                  affiliateUrl="https://amzn.to/your_affiliate_id"
+                  price="Amazon"
+                />
               </div>
             )}
 

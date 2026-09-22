@@ -7,6 +7,7 @@ import ConfirmModal from "../components/ConfirmModal";
 import SEO from "../components/SEO";
 // import AdBanner from "../components/AdBanner";
 import AAdsBanner from "../components/AAdsBanner";
+import AmazonAdCard from "../components/AmazonAdCard";
 import CommentSection from "../components/CommentSection";
 import { useAuth } from "../context/AuthContext";
 import { getReadingTime } from "../utils/readingTime";
@@ -259,6 +260,15 @@ export default function PostDetail() {
         <div className="my-10">
           <AAdsBanner />
         </div>
+
+        <AmazonAdCard
+          title="Recommended Tool"
+          productName="Keychron K2 Mechanical Keyboard"
+          productImage="https://m.media-amazon.com/images/I/61N3mC35GLL._AC_SL1500_.jpg"
+          affiliateUrl="https://amzn.to/YOUR_LINK"
+          price="See on Amazon"
+        />
+
         {/* <div className="my-10">
           <AdBanner slot="6089629109" />
         </div> */}
