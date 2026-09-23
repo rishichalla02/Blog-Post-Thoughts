@@ -7,8 +7,6 @@ import api from "../api/axios";
 import SEO from "../components/SEO";
 // import AdBanner from "../components/AdBanner";
 import AAdsBanner from "../components/AAdsBanner";
-import MyBidAds from "../components/MyBidAds";
-import ClickAdiilaBanner from "../components/ClickAdiilaBanner";
 import { getRandomAmazonAd } from "../data/amazonAds";
 import AmazonAdCard from "../components/AmazonAdCard";
 
@@ -116,8 +114,6 @@ export default function Home() {
                 <AAdsBanner />
               </div>
             )}
-            <MyBidAds />
-            <ClickAdiilaBanner />
 
             {/* 3. Third Group: Posts 7 and beyond */}
             {posts.length > 6 && (
