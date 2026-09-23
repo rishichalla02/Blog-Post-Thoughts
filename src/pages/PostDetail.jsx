@@ -212,10 +212,6 @@ export default function PostDetail() {
           </div>
         )}
 
-        <div className="my-10">
-          <AAdsBanner />
-        </div>
-
         {/* Automatically displays an Amazon Ad at the bottom of the article */}
         <div className="my-10 flex justify-center">
           <AmazonAdCard product={adProduct} />
@@ -266,11 +262,6 @@ export default function PostDetail() {
 
         <div className="my-10">
           <AAdsBanner />
-        </div>
-
-        {/* Automatically displays an Amazon Ad at the bottom of the article */}
-        <div className="my-10 flex justify-center">
-          <AmazonAdCard product={adProduct} />
         </div>
 
         {/* <div className="my-10">
