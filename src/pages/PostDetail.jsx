@@ -7,6 +7,7 @@ import ConfirmModal from "../components/ConfirmModal";
 import SEO from "../components/SEO";
 // import AdBanner from "../components/AdBanner";
 import AAdsBanner from "../components/AAdsBanner";
+import MyBidAds from "../components/MyBidAds";
 import { getRandomAmazonAd } from "../data/amazonAds";
 import AmazonAdCard from "../components/AmazonAdCard";
 import CommentSection from "../components/CommentSection";
@@ -262,6 +263,7 @@ export default function PostDetail() {
 
         <div className="my-10">
           <AAdsBanner />
+          <MyBidAds />
         </div>
 
         {/* <div className="my-10">

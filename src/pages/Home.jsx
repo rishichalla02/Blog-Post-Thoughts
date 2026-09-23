@@ -7,6 +7,7 @@ import api from "../api/axios";
 import SEO from "../components/SEO";
 // import AdBanner from "../components/AdBanner";
 import AAdsBanner from "../components/AAdsBanner";
+import MyBidAds from "../components/MyBidAds";
 import { getRandomAmazonAd } from "../data/amazonAds";
 import AmazonAdCard from "../components/AmazonAdCard";
 
@@ -112,6 +113,7 @@ export default function Home() {
             {posts.length > 6 && (
               <div className="my-10 min-h-[100px] flex items-center justify-center">
                 <AAdsBanner />
+                <MyBidAds />
               </div>
             )}
 
