@@ -35,6 +35,20 @@ export const AMAZON_ADS = [
     productImage: "https://m.media-amazon.com/images/I/41lljoZVf0L.jpg",
     affiliateUrl: "https://amzn.to/4ykZC2U",
     price: "Check on Amazon"
+  },  
+  {
+    title: "Magic Face Wash Duo",
+    productName: "Magic Face Wash Duo | Reduce Tan & Skin Brightening | With Saffron, Glutathione & Lactic Acid | Restores Natural Glow | For Men & Women | All Skin Types ( 100g x 2 )",
+    productImage: "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/71dED9zpj4L._SY450_PIbundle-2,TopRight,0,0_AA450SH20_.jpg",
+    affiliateUrl: "https://link.amazon/B0baTbzvJ",
+    price: "Check on Amazon"
+  }, 
+  {
+    title: "Kratos Pop Ear Buds",
+    productName: "Kratos Pop Ear Buds Wireless with 60H Playtime, Noise Isolation & Clear Calls, Bluetooth Earbuds with Voice Assistant, Ear Buds with Bluetooth V 5.3 & with Type C Fast Charging, IPX4 TWS Earphones",
+    productImage: "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/61dotb1gW1L._SY450_.jpg",
+    affiliateUrl: "https://link.amazon/B03XRtZfp",
+    price: "Check on Amazon"
   },
 ];
 

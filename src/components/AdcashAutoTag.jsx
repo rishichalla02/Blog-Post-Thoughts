@@ -18,7 +18,7 @@ export default function AdcashAutoTag() {
     script.src = "//acscdn.com/script/aclib.js";
     script.onload = () => {
       if (window.aclib) {
-        window.aclib.runAutoTag({ zoneId: "udxzwas3a0" });
+        window.aclib.runAutoTag({ zoneId: "biseddyrpy" });
       }
     };
 
