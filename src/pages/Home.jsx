@@ -95,7 +95,7 @@ export default function Home() {
 
             {/* Amazon Ad Banner after 3 posts */}
             {posts.length > 3 && (
-              <div className="my-10 flex justify-center">
+              <div className="my-8 flex justify-center">
                 <AmazonAdCard product={adProduct} />
               </div>
             )}
@@ -111,7 +111,7 @@ export default function Home() {
 
             {/* AAds Banner after 6 posts */}
             {posts.length > 6 && (
-              <div className="my-10 min-h-[100px] flex items-center justify-center">
+              <div className="my-8 min-h-[80px] flex items-center justify-center">
                 <AAdsBanner />
               </div>
             )}
