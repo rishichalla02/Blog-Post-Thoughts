@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet-async";
 import AnimatedPage from "../components/AnimatedPage";
 import ConfirmModal from "../components/ConfirmModal";
 import SEO from "../components/SEO";
-// import AdBanner from "../components/AdBanner";
+import AdBanner from "../components/AdBanner";
 import AAdsBanner from "../components/AAdsBanner";
 import { getRandomAmazonAd } from "../data/amazonAds";
 import AmazonAdCard from "../components/AmazonAdCard";
@@ -217,9 +217,9 @@ export default function PostDetail() {
           <AmazonAdCard product={adProduct} />
         </div>
 
-        {/* <div className="my-10">
-          <AdBanner slot="1028874117" />
-        </div> */}
+        {/* <div className="my-10"> */}
+        <AdBanner slot="1028874117" />
+        {/* </div> */}
 
         <div className="prose prose-lg max-w-none mt-10 text-ink/80 dark:text-paper/80 leading-relaxed whitespace-pre-line break-words">
           {post.content}
@@ -236,13 +236,13 @@ export default function PostDetail() {
               </span>
             ))}
           </div>
-        )}
+        )} */}
 
-        <div className="my-10">
-          <AdBanner slot="1028874117" />
-        </div>
+        {/* <div className="my-10"> */}
+        <AdBanner slot="1028874117" />
+        {/* </div> */}
 
-        <div className="prose prose-lg max-w-none mt-10 text-ink/80 dark:text-paper/80 leading-relaxed whitespace-pre-line break-words">
+        {/* <div className="prose prose-lg max-w-none mt-10 text-ink/80 dark:text-paper/80 leading-relaxed whitespace-pre-line break-words">
           {post.content}
         </div> */}
 

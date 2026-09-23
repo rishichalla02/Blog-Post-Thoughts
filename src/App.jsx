@@ -8,8 +8,6 @@ import Home from "./pages/Home";
 import ScrollToTop from "./components/ScrollToTop";
 import BuyMeACoffeeWidget from "./components/BuyMeACoffeeWidget";
 import AdcashAutoTag from "./components/AdcashAutoTag";
-import MyBidAds from "./components/MyBidAds";
-import ClickAdiilaBanner from "./components/ClickAdiilaBanner";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
@@ -46,8 +44,6 @@ export default function App() {
         </AnimatePresence>
       </main>
       <Footer />
-      <MyBidAds />
-      <ClickAdiilaBanner />
       <ScrollToTop />
       <BuyMeACoffeeWidget />
     </div>

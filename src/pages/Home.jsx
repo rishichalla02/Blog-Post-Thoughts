@@ -5,7 +5,7 @@ import PostCard from "../components/PostCard";
 import AnimatedPage from "../components/AnimatedPage";
 import api from "../api/axios";
 import SEO from "../components/SEO";
-// import AdBanner from "../components/AdBanner";
+import AdBanner from "../components/AdBanner";
 import AAdsBanner from "../components/AAdsBanner";
 import { getRandomAmazonAd } from "../data/amazonAds";
 import AmazonAdCard from "../components/AmazonAdCard";
@@ -124,11 +124,11 @@ export default function Home() {
               </div>
             )}
 
-            {/* {posts.length > 6 && (
-              <div className="my-10 min-h-[100px] flex items-center justify-center">
-                <AdBanner slot="8907364131" />
-              </div>
-            )} */}
+            {/* {posts.length > 6 && ( */}
+            {/* <div className="my-10 min-h-[100px] flex items-center justify-center"> */}
+            <AdBanner slot="8907364131" />
+            {/* </div> */}
+            {/* )} */}
 
             {/* {posts.length > 6 && (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
