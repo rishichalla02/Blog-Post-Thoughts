@@ -113,9 +113,9 @@ export default function Home() {
             {posts.length > 6 && (
               <div className="my-10 min-h-[100px] flex items-center justify-center">
                 <AAdsBanner />
-                <MyBidAds />
               </div>
             )}
+            <MyBidAds />
 
             {/* 3. Third Group: Posts 7 and beyond */}
             {posts.length > 6 && (

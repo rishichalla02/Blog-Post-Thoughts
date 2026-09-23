@@ -263,8 +263,8 @@ export default function PostDetail() {
 
         <div className="my-10">
           <AAdsBanner />
-          <MyBidAds />
         </div>
+        <MyBidAds />
 
         {/* <div className="my-10">
           <AdBanner slot="6089629109" />
