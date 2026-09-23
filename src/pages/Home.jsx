@@ -8,6 +8,7 @@ import SEO from "../components/SEO";
 // import AdBanner from "../components/AdBanner";
 import AAdsBanner from "../components/AAdsBanner";
 import MyBidAds from "../components/MyBidAds";
+import ClickAdiilaBanner from "../components/ClickAdiilaBanner";
 import { getRandomAmazonAd } from "../data/amazonAds";
 import AmazonAdCard from "../components/AmazonAdCard";
 
@@ -111,11 +112,12 @@ export default function Home() {
 
             {/* AAds Banner after 6 posts */}
             {posts.length > 6 && (
-              <div className="my-8 min-h-[80px] flex items-center justify-center">
+              <div className="my-10 min-h-[100px] flex items-center justify-center">
                 <AAdsBanner />
               </div>
             )}
             <MyBidAds />
+            <ClickAdiilaBanner />
 
             {/* 3. Third Group: Posts 7 and beyond */}
             {posts.length > 6 && (

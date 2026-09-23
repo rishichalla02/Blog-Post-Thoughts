@@ -1,7 +1,7 @@
-// src/components/AAdsBanner.jsx
+// src/components/WpAdManagerBanner.jsx
 import { useEffect, useRef } from "react";
 
-export default function AAdsBanner() {
+export default function WpAdManagerBanner() {
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -11,9 +11,9 @@ export default function AAdsBanner() {
     }
 
     const script = document.createElement("script");
-    script.src = "https://js.mbidadm.com/static/scripts.js";
+    script.src = "https://js.wpadmngr.com/static/adManager.js";
     script.async = true;
-    script.setAttribute("data-admpid", "465753");
+    script.setAttribute("data-admpid", "465760");
 
     containerRef.current.appendChild(script);
 
