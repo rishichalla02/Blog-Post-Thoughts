@@ -28,7 +28,7 @@ export default function AAdsBanner() {
   return (
     <div
       ref={containerRef}
-      className="w-full flex justify-center items-center my-4 min-h-[70px] overflow-hidden"
+    //   className="w-full flex justify-center items-center my-2 min-h-[20px] overflow-hidden"
     />
   );
 }
