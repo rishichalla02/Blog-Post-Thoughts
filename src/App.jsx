@@ -7,7 +7,6 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import ScrollToTop from "./components/ScrollToTop";
 import BuyMeACoffeeWidget from "./components/BuyMeACoffeeWidget";
-import AdcashAutoTag from "./components/AdcashAutoTag";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
@@ -22,7 +21,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <AdcashAutoTag />
       <Navbar />
       <main className="flex-1">
         <AnimatePresence mode="wait">

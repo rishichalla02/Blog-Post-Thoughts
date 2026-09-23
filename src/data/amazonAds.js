@@ -50,6 +50,27 @@ export const AMAZON_ADS = [
     affiliateUrl: "https://link.amazon/B03XRtZfp",
     price: "Check on Amazon"
   },
+  {
+    title: "Mee Mee Baby Liquid Detergent 1 L",
+    productName: "Mee Mee Baby Liquid Detergent 1 L | pH Balanced, Free from Harsh Chemicals, Safe for Mother’s Hands & Baby’s Skin | Anti-Bacterial, Removes Stains & Odor with One Drop, Hypoallergenic | Mild Scent",
+    productImage: "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/6161bQC8ZSL._SY450_.jpg",
+    affiliateUrl: "https://link.amazon/B0j1vDNYf",
+    price: "Check on Amazon"
+  },
+  {
+    title: "ASIAN Wonder-13 Men's Running Shoe",
+    productName: "ASIAN Wonder-13 Men's Running Shoe | Lightweight Sports Design, Soft Cushioning, Reliable Grip for Casual, Travel & Gym",
+    productImage: "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/81SE3otasCL._SX575_.jpg",
+    affiliateUrl: "https://link.amazon/B0aVepwQ6",
+    price: "Check on Amazon"
+  },
+  {
+    title: "Rigohill Doger Olive Green Leather Wallet For Men",
+    productName: "Rigohill Doger Olive Green Leather Wallet For Men, 2 Card Slot | RFID Wallet",
+    productImage: "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/91t1wCuXleL._SX679_.jpg",
+    affiliateUrl: "https://www.amazon.in/Rigohill-Doger-Olive-Leather-Wallet/dp/B08Z387RXH?pf_rd_r=3N0T46JSMKP1SVRRJMRH&pf_rd_p=931e0be0-840c-430f-8d31-de853221ae27&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&th=1&linkCode=ll2&tag=rishi890e1-21&linkId=8b4f7b065ef71847364719f7206f957b&ref_=as_li_ss_tl",
+    price: "Check on Amazon"
+  },
 ];
 
 // Helper function to pick a random ad
