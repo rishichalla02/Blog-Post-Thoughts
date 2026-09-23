@@ -25,5 +25,10 @@ export default function WpAdManagerBanner() {
     };
   }, []);
 
-  return <div ref={containerRef} />;
+  return (
+    <div
+      ref={containerRef}
+      className="w-full flex justify-center items-center my-6 min-h-[90px] overflow-hidden"
+    />
+  );
 }
