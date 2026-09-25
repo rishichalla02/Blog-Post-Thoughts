@@ -71,6 +71,27 @@ export const AMAZON_ADS = [
     affiliateUrl: "https://www.amazon.in/Rigohill-Doger-Olive-Leather-Wallet/dp/B08Z387RXH?pf_rd_r=3N0T46JSMKP1SVRRJMRH&pf_rd_p=931e0be0-840c-430f-8d31-de853221ae27&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&th=1&linkCode=ll2&tag=rishi890e1-21&linkId=8b4f7b065ef71847364719f7206f957b&ref_=as_li_ss_tl",
     price: "Check on Amazon"
   },
+  {
+    title: "गुलामगिरी हिंदी किताब",
+    productName: "Gulamgiri Book In Hindi | गुलामगिरी हिंदी किताब | महात्मा ज्योतिबा फुले की पुस्तक हिन्दी में Edition | गुलाम गिरी बुक | Gulam Giri बुक्स By Mahatma Jyotiba Phule Books | Jotiba Fule Slavery Savitribai",
+    productImage: "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/81SauBqapaL._SY425_.jpg",
+    affiliateUrl: "https://link.amazon/B09LgLLtJ",
+    price: "Check on Amazon"
+  },
+  {
+    title: "How to Stop Worrying and Start Living: Original Edition",
+    productName: "How to Stop Worrying and Start Living: Original Edition | Premium Paperback",
+    productImage: "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/61cvUtcU8TL._SY425_.jpg",
+    affiliateUrl: "https://link.amazon/B09zjfGqt",
+    price: "Check on Amazon"
+  },
+  {
+    title: "Sri Vishnu Sahasranama Stotram",
+    productName: "Sri Vishnu Sahasranama Stotram | Pocket Edition | 1000 Divine Names of Lord Vishnu | Daily Prayer & Devotional Book",
+    productImage: "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/81WfqiQnYNL._SY342_.jpg",
+    affiliateUrl: "https://link.amazon/B0apWPLtS",
+    price: "Check on Amazon"
+  },
 ];
 
 // Helper function to pick a random ad
