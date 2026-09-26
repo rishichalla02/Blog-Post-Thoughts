@@ -92,6 +92,48 @@ export const AMAZON_ADS = [
     affiliateUrl: "https://link.amazon/B0apWPLtS",
     price: "Check on Amazon"
   },
+  {
+    title: "Pilgrim 10% Vitamin C Serum",
+    productName: "Pilgrim 10% Vitamin C Serum 30ml for Glowing Skin|With 5% Niacinamide, Hyaluronic & Glycolic Acid|Fades Dark Spots, Pigmentation|For All, Oily, Combination, Normal Skin |Beginner Friendly - Men, Women",
+    productImage: "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/71BTAV8rtdL._SL1500_.jpg",
+    affiliateUrl: "https://link.amazon/B09Bpirhj",
+    price: "Check on Amazon"
+  },
+  {
+    title: "URBAN POCKETS Jeans for Men",
+    productName: "URBAN POCKETS Jeans for Men || Men's Jeans Denim (Blue-Cargo-Jeans-U23-24)",
+    productImage: "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/91TYLEmsegL._SX679_.jpg",
+    affiliateUrl: "https://link.amazon/B0iF4Qwrp",
+    price: "Check on Amazon"
+  },
+  {
+    title: "Skybags Brat Pro Max 35L Laptop Backpack",
+    productName: "Skybags Brat Pro Max 35L Laptop Backpack (Upto 15.6'), 3 Compartments",
+    productImage: "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/71t2tPA2oTL._SX679_.jpg",
+    affiliateUrl: "https://link.amazon/B05EbQiLQ",
+    price: "Check on Amazon"
+  },
+  {
+    title: "Divine Five: Motherland",
+    productName: "Divine Five: Motherland | An Epic Mythology-Powered Sci-Fi Action Adventure | Best Storytelling Book for Kids & Teens (10+): 1 (Divine 5 Volume 1 Motherland)",
+    productImage: "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/81li1ZiZN+L._SY385_.jpg",
+    affiliateUrl: "https://link.amazon/B0ixKTgxH",
+    price: "Check on Amazon"
+  },
+  {
+    title: "Mahabharata - Stories Of Valor And Virtue",
+    productName: "Mahabharata - Stories Of Valor And Virtue | Indian Mythology, History & Folktales | Cultural Stories For Kids & Adults | Illustrated Book | Learn Moral Lessons From The Great Indian",
+    productImage: "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/81mJg0GGW1L._SY342_.jpg",
+    affiliateUrl: "https://link.amazon/B0aoAWJI8",
+    price: "Check on Amazon"
+  },
+  {
+    title: "Short Stories - Famous Hindi Writers",
+    productName: "Short Stories - Famous Hindi Writers (Premchand, Sharat Chandra, Jaishankar Prasad, Rabindranath Tagore)",
+    productImage: "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/61MwkJ2uMHL._SY425_.jpg",
+    affiliateUrl: "https://link.amazon/B0ezXxIa3",
+    price: "Check on Amazon"
+  },
 ];
 
 // Helper function to pick a random ad
