@@ -134,6 +134,34 @@ export const AMAZON_ADS = [
     affiliateUrl: "https://link.amazon/B0ezXxIa3",
     price: "Check on Amazon"
   },
+  {
+    title: "Logitech B170 USB Mouse",
+    productName: "Logitech B170 USB Mouse,12-Months Battery Life, Ambidextrous, PC/Mac/Laptop - Black",
+    productImage: "https://m.media-amazon.com/images/I/51uCYJqDrML._SX679_.jpg",
+    affiliateUrl: "https://link.amazon/B0ccAK6T4",
+    price: "Check on Amazon"
+  },
+  {
+    title: "True Decor 7 Hour Long Burning Tealight Candles",
+    productName: "True Decor 7 Hour Long Burning Tealight Candles - Pack of 10 Unscented Tea Light Candle Set - Smokeless & Odorless Paraffin Wax Tea Candles for Home Decor & Small Votive Holders",
+    productImage: "https://m.media-amazon.com/images/I/51fZlegP0GL._SX679_.jpg",
+    affiliateUrl: "https://link.amazon/B0ch1CFEy",
+    price: "Check on Amazon"
+  },
+  {
+    title: "Campus Men Hurricane Running Shoes",
+    productName: "Campus Men Hurricane Running Shoes",
+    productImage: "https://m.media-amazon.com/images/I/91aE0iI+sfL._SX575_.jpg",
+    affiliateUrl: "https://link.amazon/B05H4USZe",
+    price: "Check on Amazon"
+  },
+  {
+    title: "WildHorn Blue Hunter Leather Men's Wallet",
+    productName: "WildHorn Blue Hunter Leather Men's Wallet",
+    productImage: "https://m.media-amazon.com/images/I/913xcWyN3iL._SX679_.jpg",
+    affiliateUrl: "https://link.amazon/B0dJtUi1x",
+    price: "Check on Amazon"
+  },
 ];
 
 // Helper function to pick a random ad
