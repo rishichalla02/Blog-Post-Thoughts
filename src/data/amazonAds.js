@@ -162,6 +162,62 @@ export const AMAZON_ADS = [
     affiliateUrl: "https://link.amazon/B0dJtUi1x",
     price: "Check on Amazon"
   },
+  {
+    title: "HP K120 Wired Keyboard",
+    productName: "HP K120 Wired Keyboard/3 Years RTB Warranty",
+    productImage: "https://m.media-amazon.com/images/I/6141GCywqnL._SX679_.jpg",
+    affiliateUrl: "https://link.amazon/B0hk7ubeJ",
+    price: "Check on Amazon"
+  },
+  {
+    title: "Boldfit Weight Machine for Home Digital Weighing Machine",
+    productName: "Boldfit Weight Machine for Home Digital Weighing Machine for Human Body with LCD Display Max Weight Capacity 180Kgs (Batteries Not Included) – Bathroom Scale for Home",
+    productImage: "https://m.media-amazon.com/images/I/61Azx9HglrL._SX679_.jpg",
+    affiliateUrl: "https://link.amazon/B0aI2SiDz",
+    price: "Check on Amazon"
+  },
+  {
+    title: "OpenTech® Military-Grade Premium Tempered Glass Screen Protector for iPhone",
+    productName: "OpenTech® Military-Grade Premium Tempered Glass Screen Protector for iPhone 13/13 Pro / 14 / 16e / 17e with Edge to Edge Coverage - Case Friendly, Anti-scratch and Bubble free installation kit",
+    productImage: "https://m.media-amazon.com/images/I/712dSDt3nOL._SX679_.jpg",
+    affiliateUrl: "https://link.amazon/B00zZD2xu",
+    price: "Check on Amazon"
+  },
+  {
+    title: "45W GaN Type C Super Fast Charger with Type-C Cable",
+    productName: "45W GaN Type C Super Fast Charger with Type-C Cable",
+    productImage: "https://m.media-amazon.com/images/I/51db3wCBZhL._SY450_.jpg",
+    affiliateUrl: "https://link.amazon/B0hfWQ92e",
+    price: "Check on Amazon"
+  },
+  {
+    title: "One94Store Astronaut Space Projector Night Light",
+    productName: "One94Store Astronaut Space Projector Night Light – 360° Rotating Nebula Star Projector with Remote, Timer & Adjustable Head – LED Space Lamp for Kids’ Bedroom, Diwali Gifts, Toys (Star Astronaut)",
+    productImage: "https://m.media-amazon.com/images/I/71yUGtDmajL._SX466_.jpg",
+    affiliateUrl: "https://link.amazon/B07HgEZ8i",
+    price: "Check on Amazon"
+  },
+  {
+    title: "Java Essentials Volume 1: Programming Fundamentals",
+    productName: "Java Essentials Volume 1: Programming Fundamentals: Learn Java, Variables, Control Flow, and Methods with Hands-On Coding Exercises and Examples for Beginners",
+    productImage: "https://m.media-amazon.com/images/I/71iC0GDxtjL._SY425_.jpg",
+    affiliateUrl: "https://link.amazon/B01OS2RIS",
+    price: "Check on Amazon"
+  },
+  {
+    title: "Python Essentials You Always Wanted to Know",
+    productName: "Python Essentials You Always Wanted to Know: Beginner's Guide to Python Programming, Data Structures, Data Analytics with Hands-On Coding Exercises (Self-Learning Management)",
+    productImage: "https://m.media-amazon.com/images/I/615nXbg6PcL._SY425_.jpg",
+    affiliateUrl: "https://link.amazon/B02DcxlDX",
+    price: "Check on Amazon"
+  },
+  {
+    title: "Ultimate Full Stack Interview Guide",
+    productName: "Ultimate Full Stack Interview Guide: Written by a Hiring Manager Who’s Conducted 200+ Interviews",
+    productImage: "https://m.media-amazon.com/images/I/61V2Ph6-8dL._SY466_.jpg",
+    affiliateUrl: "https://link.amazon/B0eK6yFPP",
+    price: "Check on Amazon"
+  },
 ];
 
 // Helper function to pick a random ad
