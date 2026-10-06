@@ -213,9 +213,9 @@ export default function PostDetail() {
         )}
 
         {/* Automatically displays an Amazon Ad at the bottom of the article */}
-        <div className="my-8 flex justify-center">
+        {/* <div className="my-8 flex justify-center">
           <AmazonAdCard product={adProduct} />
-        </div>
+        </div> */}
 
         {/* <div className="my-10"> */}
         <AdBanner slot="1028874117" />
@@ -260,13 +260,13 @@ export default function PostDetail() {
           />
         </div>
 
-        <div className="my-10">
-          <AAdsBanner />
-        </div>
-
         {/* <div className="my-10">
-          <AdBanner slot="6089629109" />
+          <AAdsBanner />
         </div> */}
+
+        {/* <div className="my-10"> */}
+          <AdBanner slot="6089629109" />
+        {/* </div> */}
 
         <RelatedPosts category={post.category} excludeId={post._id} />
 

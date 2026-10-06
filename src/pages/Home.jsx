@@ -93,11 +93,11 @@ export default function Home() {
             </div>
 
             {/* Amazon Ad Banner after 3 posts */}
-            {posts.length > 3 && (
+            {/* {posts.length > 3 && (
               <div className="my-8 flex justify-center">
                 <AmazonAdCard product={adProduct} />
               </div>
-            )}
+            )} */}
 
             {/* 2. Second Group: Posts 4 to 6 */}
             {posts.length > 3 && (
@@ -109,11 +109,11 @@ export default function Home() {
             )}
 
             {/* AAds Banner after 6 posts */}
-            {posts.length > 6 && (
+            {/* {posts.length > 6 && (
               <div className="my-10 min-h-[100px] flex items-center justify-center">
                 <AAdsBanner />
               </div>
-            )}
+            )} */}
 
             {/* 3. Third Group: Posts 7 and beyond */}
             {posts.length > 6 && (
