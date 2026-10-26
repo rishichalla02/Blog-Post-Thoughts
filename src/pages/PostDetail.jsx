@@ -213,9 +213,9 @@ export default function PostDetail() {
         )}
 
         {/* Automatically displays an Amazon Ad at the bottom of the article */}
-        {/* <div className="my-8 flex justify-center">
+        <div className="my-8 flex justify-center">
           <AmazonAdCard product={adProduct} />
-        </div> */}
+        </div>
 
         {/* <div className="my-10"> */}
         <AdBanner slot="1028874117" />

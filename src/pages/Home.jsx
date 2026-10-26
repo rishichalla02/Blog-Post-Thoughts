@@ -93,11 +93,11 @@ export default function Home() {
             </div>
 
             {/* Amazon Ad Banner after 3 posts */}
-            {/* {posts.length > 3 && (
+            {posts.length > 3 && (
               <div className="my-8 flex justify-center">
                 <AmazonAdCard product={adProduct} />
               </div>
-            )} */}
+            )}
 
             {/* 2. Second Group: Posts 4 to 6 */}
             {posts.length > 3 && (
